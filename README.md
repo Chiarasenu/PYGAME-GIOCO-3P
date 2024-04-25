@@ -1,2 +1,2 @@
 # PYGAME-GIOCO-3P
-gioco di pygame esempio
+gioco di pygame 
