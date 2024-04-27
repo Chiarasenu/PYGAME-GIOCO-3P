@@ -9,10 +9,6 @@ screen = pygame.display.set_mode(window)
 pygame.display.set_caption('gioco')
 screen.fill((2, 247, 178))
 
-
-
-
-
 running = True
 
 while running:
