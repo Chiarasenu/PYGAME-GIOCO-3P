@@ -11,16 +11,19 @@ screen.fill((2, 247, 178))
 
 running = True
 
+clock = pygame.time.Clock()
+fps = 60
+
 while running:
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
         elif event.type == pygame.KEYDOWN: 
-            run = True
+            run = True   
 
-        
     pygame.display.update()
+    clock.tick(fps)
     
 pygame.quit()            
     
