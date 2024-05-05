@@ -1,32 +1,50 @@
-import pygame, sys
-from pygame.locals import *
+import pygame
+import math
 
+pygame.init()
+clock = pygame.time.Clock()
+FPS = 60
+
+SCREEN_WIDTH = 1500
+SCREEN_HEIGHT = 600
 
 #schermo
-
-WINDOW_SIZE = (1000, 650)
-screen = pygame.display.set_mode(WINDOW_SIZE)
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('gioco')
-screen.fill((2, 247, 178))
-schermo = pygame.Surface((1000, 650))
-schermo.fill((2, 0, 178))
-sfondo = pygame.image.load('gioco/immagini/menu_background.png')
-# sfondo = pygame.transform.scale(sfondo, (1000, 650))
 
-running = True
-clock = pygame.time.Clock()
-fps = 60
-while running:
+# immmagine
+sfondo = pygame.image.load('gioco/immagini/sfondo.png').convert()
+sfondo_width = sfondo.get_width()
+sfondo_rect = sfondo.get_rect()
+
+# variabili
+scroll = 0
+tiles = math.ceil(SCREEN_WIDTH / sfondo_width) + 1
+
+# game loop
+run = True
+while run:
+    
+    clock.tick(FPS)
+
+    for  i in range(0, tiles):
+        screen.blit(sfondo, (i * sfondo_width + scroll,0))
+        sfondo_rect.x = i * sfondo_width + scroll
+        pygame.draw.rect(screen, (0, 255, 0), sfondo_rect, 1)
+    
+    scroll -= 5
+    
+    if abs(scroll) > sfondo_width:
+        scroll = 0
+    
+        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        elif event.type == pygame.KEYDOWN: 
-            run = True   
+            
     pygame.display.update()
-    clock.tick(fps)
+    
 pygame.quit() 
-
-#eventuali personaggi
 
   
 
