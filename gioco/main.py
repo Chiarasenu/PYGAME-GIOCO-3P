@@ -5,15 +5,15 @@ pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
 
-SCREEN_WIDTH = 1400
-SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 700
+SCREEN_HEIGHT = 500
 
 #schermo
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Gioco')
 
 # immmagine
-sfondo = pygame.image.load('gioco/immagini/sfondo1.png')
+sfondo = pygame.image.load('gioco/sfondo1.png')
 sfondo = pygame.transform.scale(sfondo, (1600, 800))
 sfondo_width = sfondo.get_width()
 sfondo_rect = sfondo.get_rect()
