@@ -10,10 +10,10 @@ SCREEN_HEIGHT = 1000
 
 #schermo
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('gioco')
+pygame.display.set_caption('Gioco')
 
 # immmagine
-sfondo = pygame.image.load('gioco/immagini/sfondo.png')
+sfondo = pygame.image.load('gioco/immagini/sfondo1.png')
 sfondo = pygame.transform.scale(sfondo, (1600, 800))
 sfondo_width = sfondo.get_width()
 sfondo_rect = sfondo.get_rect()
