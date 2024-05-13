@@ -1,3 +1,8 @@
+#Serve
+- Menu che spieghi la diversa frutta
+- Modalita Singleplayer e Multiplayer
+- Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
+
 import pygame
 import math
 
@@ -23,6 +28,7 @@ ogg_rect = ogg.get_rect()
 
 numero_celle = 20
 lato_celle = 40
+
 
 # game loop
 run = True
