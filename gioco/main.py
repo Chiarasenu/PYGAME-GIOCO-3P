@@ -21,7 +21,8 @@ ogg = pygame.image.load("gioco/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
-
+numero_celle = 20
+lato_celle = 40
 
 # game loop
 run = True
