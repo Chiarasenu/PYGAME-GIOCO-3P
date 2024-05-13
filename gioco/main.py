@@ -1,7 +1,7 @@
-#Serve
-- Menu che spieghi la diversa frutta
-- Modalita Singleplayer e Multiplayer
-- Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
+# #Serve
+# - Menu che spieghi la diversa frutta
+# - Modalita Singleplayer e Multiplayer
+# - Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
 
 import pygame
 import math
