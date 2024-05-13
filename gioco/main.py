@@ -17,7 +17,7 @@ sfondo = pygame.image.load('gioco/sfondo1.png')
 sfondo = pygame.transform.scale(sfondo, (1600, 800))
 sfondo_width = sfondo.get_width()
 sfondo_rect = sfondo.get_rect()
-ogg = pygame.image.load("gioco/mela.png").convert()
+ogg = pygame.image.load("gioco/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
