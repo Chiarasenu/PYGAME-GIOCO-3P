@@ -18,11 +18,11 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Gioco')
 
 # immmagine
-sfondo = pygame.image.load('gioco/sfondo1.png')
+sfondo = pygame.image.load('gioco/Immagini/sfondo1.png')
 sfondo = pygame.transform.scale(sfondo, (1600, 800))
 sfondo_width = sfondo.get_width()
 sfondo_rect = sfondo.get_rect()
-ogg = pygame.image.load("gioco/mela.png").convert_alpha()
+ogg = pygame.image.load("gioco/Immagini/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
@@ -51,7 +51,6 @@ while run:
         if event.type == pygame.QUIT:
             run = False
     screen.blit(sfondo, (0,0))
-    pygame.draw.rect(screen, (255,0,255), ogg_rect)
     screen.blit(ogg, ogg_rect)
 
     
