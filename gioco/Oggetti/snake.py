@@ -2,6 +2,7 @@ from math import Vector2
 
 class Snake:
     def __init__(self) -> None:
+        pass
         # self.corpo = [Vector2(x,y),Vector2(x,y),Vector2(x,y)]
         
 
