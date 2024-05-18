@@ -5,6 +5,8 @@
 
 import pygame
 import math
+from Oggetti import snake_blu
+from Oggetti import snake_rosso
 
 pygame.init()
 clock = pygame.time.Clock()
