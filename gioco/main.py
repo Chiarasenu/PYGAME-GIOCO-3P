@@ -10,10 +10,15 @@ pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
 
-SCREEN_WIDTH = 700
-SCREEN_HEIGHT = 500
+
 
 #schermo 
+numero_celle = 30
+lato_celle = 40
+
+SCREEN_WIDTH = numero_celle * lato_celle
+SCREEN_HEIGHT = numero_celle * lato_celle / 2
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Gioco')
 
@@ -26,8 +31,7 @@ ogg = pygame.image.load("gioco/Immagini/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
-numero_celle = 20
-lato_celle = 40
+
 
 
 # game loop
