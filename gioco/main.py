@@ -7,12 +7,11 @@ import pygame
 import math
 from Oggetti import snake_blu
 from Oggetti import snake_rosso
+from bottone import Bottone
 
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
-
-
 
 #schermo 
 numero_celle = 30
@@ -33,8 +32,14 @@ ogg = pygame.image.load("gioco/Immagini/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
+# menù
 
-
+def menù():
+    pygame.display.set_caption("MENÙ")
+    while True:
+        screen.blit(117, 212, 93)
+        KEYDOWN_POS = pygame.KEYDOWN()
+        
 
 # game loop
 run = True
