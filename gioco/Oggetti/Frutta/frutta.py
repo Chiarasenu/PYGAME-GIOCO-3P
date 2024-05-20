@@ -1,4 +1,4 @@
-class Frutto:
+class Mela:
     def __init__(self) -> None:
         pass
 
