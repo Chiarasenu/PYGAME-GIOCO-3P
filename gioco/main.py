@@ -33,6 +33,9 @@ ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
 # menù
+# due surface o una 
+
+
 
 def menù():
     pygame.display.set_caption("MENÙ")
