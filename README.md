@@ -16,3 +16,5 @@ Giocatore 2:
 
 FRUTTA:
 Mela      - Aumenta la lunghezza del serpente di uno
+Limone    - SCambia i tasti per il movimento
+Anguria   - Velocizza x2
