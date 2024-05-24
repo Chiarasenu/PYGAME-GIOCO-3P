@@ -1,5 +1,5 @@
 import pygame
-from math import Vector2
+from pygame.math import Vector2
 
 class Snake_Blu:
     def __init__(self) -> None:
