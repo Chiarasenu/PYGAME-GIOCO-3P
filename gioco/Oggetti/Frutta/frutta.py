@@ -13,6 +13,9 @@ class Mela:
     def draw_mela(self, lato_celle, screen):
         mela_rect = pygame.Rect(int(self.pos.x * lato_celle), int(self.pos.y * lato_celle))
         screen.blit(mela, mela_rect)
+
+
+
 # Serve 
 # 1. la randomizzazione della posizione
 # 2. il rect

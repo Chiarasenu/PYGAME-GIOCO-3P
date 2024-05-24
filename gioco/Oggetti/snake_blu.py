@@ -3,7 +3,7 @@ from pygame.math import Vector2
 
 class Snake_Blu:
     def __init__(self) -> None:
-        self.corpo = [Vector2(5,10), Vector2(4,10), Vector2(3,10)]
+        self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
         self.direzione = Vector2(0,0)
         self.nuovo_corpo = False
 
@@ -62,10 +62,43 @@ class Snake_Blu:
             self.corpo = copia_corpo[:]
             self.nuovo_blocco = False
 
+    def draw_snake(self, lato_cella, screen):
+        self.update_testa()
+        self.update_coda()
 
+        for i, blocco in enumerate(self.corpo):
+            pos_x = int(blocco.x * lato_cella)
+            pos_y = int(blocco.y * lato_cella)
+            rect_blocco = pygame.Rect(pos_x, pos_y, lato_cella, lato_cella)
+            if i == 0:
+                screen.blit(self.testa, rect_blocco)
+            elif i == len(self.corpo) -1:
+                screen.blit(self.coda, rect_blocco)
+            else:
+                # Calcola la differenza di posizione tra il blocco corrente e i blocchi precedente e successivo
+                blocco_precedente = self.corpo[i + 1] - blocco
+                blocco_successivo = self.corpo[i - 1] - blocco
+                
+                # Se il blocco precedente e successivo sono allineati verticalmente
+                if blocco_precedente.x == blocco_successivo.x:
+                    # Disegna l'immagine del corpo verticale del serpente
+                    screen.blit(self.corpoV, rect_blocco)
+                # Se il blocco precedente e successivo sono allineati orizzontalmente
+                elif blocco_precedente.y == blocco_successivo.y:
+                    # Disegna l'immagine del corpo orizzontale del serpente
+                    screen.blit(self.corpoO, rect_blocco)
+                else:
+                    # Determina quale angolo disegnare in base alle direzioni dei blocchi precedente e successivo
+                    if (blocco_precedente.x == -1 and blocco_successivo.y == -1) or (blocco_precedente.y == -1 and blocco_successivo.x == -1):
+                        # Disegna l'angolo in alto a sinistra
+                        screen.blit(self.angoloNO, rect_blocco)
+                    elif (blocco_precedente.x == 1 and blocco_successivo.y == -1) or (blocco_precedente.y == -1 and blocco_successivo.x == 1):
+                        # Disegna l'angolo in alto a destra
+                        screen.blit(self.angoloNE, rect_blocco)
+                    elif (blocco_precedente.x == -1 and blocco_successivo.y == 1) or (blocco_precedente.y == 1 and blocco_successivo.x == -1):
+                        # Disegna l'angolo in basso a sinistra
+                        screen.blit(self.angoloSO, rect_blocco)
+                    elif (blocco_precedente.x == 1 and blocco_successivo.y == 1) or (blocco_precedente.y == 1 and blocco_successivo.x == 1):
+                        # Disegna l'angolo in basso a destra
+                        screen.blit(self.angoloSE, rect_blocco)
 
-# Serve:
-# - Movimento
-# - Mangiare (collisione con frutto)
-# - Allungamento dopo Mangiare
-# - Morte (collisione con se stesso o muro)
