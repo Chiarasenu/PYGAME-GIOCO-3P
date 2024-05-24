@@ -30,7 +30,37 @@ class Snake_Rosso:
         self.angoloSE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloSE.png')
         self.angoloSO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloSO.png')
 
-    
+    def update_testa(self):
+        nuova_testa = self.corpo[1] - self.body[0]
+        if nuova_testa == Vector2(1,0):
+            self.testa = self.testaO
+        elif nuova_testa == Vector2(-1,0):
+            self.testa = self.testaE
+        elif nuova_testa == Vector2(0,1):
+            self.testa = self.testaN
+        elif nuova_testa == Vector2(0,-1):
+            self.testa = self.testaS
+
+    def update_coda(self):
+        nuova_coda = self.corpo[-2] - self.body[-1]
+        if nuova_coda == Vector2(1,0):
+            self.testa = self.codaO
+        elif nuova_coda == Vector2(-1,0):
+            self.coda = self.codaE
+        elif nuova_coda == Vector2(0,1):
+            self.coda = self.codaN
+        elif nuova_coda == Vector2(0,-1):
+            self.coda = self.codaS
+
+    def aggiugi_blocco(self):
+        self.nuovo_blocco = True
+
+    def muovi_snake(self):
+        if self.nuovo_blocco == True:
+            copia_corpo = self.corpo[:]
+            copia_corpo.insert(0, copia_corpo[0] + self.direzione)
+            self.corpo = copia_corpo[:]
+            self.nuovo_blocco = False
 
 
 # Serve:
