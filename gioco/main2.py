@@ -4,6 +4,7 @@
 # - Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
 
 import pygame
+from sys import exit
 import math
 from Oggetti import snake_blu
 from Oggetti import snake_rosso
@@ -54,33 +55,15 @@ def menu():
         
 
 # game loop
-run = True
-while run:
-    
-    clock.tick(FPS)
-    
-    
-    key = pygame.key.get_pressed()
-    if key[pygame.K_a] == True:
-        ogg_frutta.x -= 5
-    if key[pygame.K_d] == True:
-        ogg_frutta.x += 5
-    if key[pygame.K_w] == True:
-        ogg_frutta.y -= 5
-    if key[pygame.K_s] == True:
-        ogg_frutta.y += 5
-    
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            run = False
-    screen.blit(sfondo, (0,0))
-    screen.blit(ogg_frutta.get_image(), ogg_frutta)
-
-    
+            pygame.quit()
+            exit()
             
     pygame.display.update()
-    
-pygame.quit() 
+    clock.tick(FPS)
+ 
 
 
 
