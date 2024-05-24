@@ -31,7 +31,7 @@ class Snake_Blu:
         self.angoloSO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSO.png').convert_alpha()
 
     def update_testa(self):
-        nuova_testa = self.corpo[1] - self.body[0]
+        nuova_testa = self.corpo[1] - self.corpo[0]
         if nuova_testa == Vector2(1,0):
             self.testa = self.testaO
         elif nuova_testa == Vector2(-1,0):
@@ -42,7 +42,7 @@ class Snake_Blu:
             self.testa = self.testaS
 
     def update_coda(self):
-        nuova_coda = self.corpo[-2] - self.body[-1]
+        nuova_coda = self.corpo[-2] - self.corpo[-1]
         if nuova_coda == Vector2(1,0):
             self.testa = self.codaO
         elif nuova_coda == Vector2(-1,0):
