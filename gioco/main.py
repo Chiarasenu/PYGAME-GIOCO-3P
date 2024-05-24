@@ -21,14 +21,14 @@ SCREEN_WIDTH = numero_celle * lato_celle
 SCREEN_HEIGHT = numero_celle * lato_celle / 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Gioco')
+pygame.display.set_caption('Snake')
 
 # immmagine
-sfondo = pygame.image.load('gioco/Immagini/sfondo1.png')
+sfondo = pygame.image.load('Gioco/Immagini/sfondo1.png')
 sfondo = pygame.transform.scale(sfondo, (1600, 800))
 sfondo_width = sfondo.get_width()
 sfondo_rect = sfondo.get_rect()
-ogg = pygame.image.load("gioco/Immagini/mela.png").convert_alpha()
+ogg = pygame.image.load("Gioco/Immagini/Frutta/mela.png").convert_alpha()
 ogg = pygame.transform.scale(ogg, (32, 32))
 ogg_rect = ogg.get_rect()
 
@@ -37,7 +37,7 @@ ogg_rect = ogg.get_rect()
 
 
 
-def menù():
+def menu():
     pygame.display.set_caption("MENÙ")
     while True:
         screen.blit(117, 212, 93)

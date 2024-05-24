@@ -2,7 +2,7 @@ import pygame
 from pygame.math import Vector2
 from random import randint
 
-mela = pygame.image.load('Gioco/Immagini/Frutta/mela.png').convert_alpha()
+mela = pygame.image.load('Gioco\Immagini\Frutta\mela.png').convert_alpha()
 
 class Mela:
     def __init__(self, numero_celle) -> None:
