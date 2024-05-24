@@ -21,4 +21,4 @@ class Bottone():
         screen.blit(self.testo, self.testo_rect)
 
     def controllo_mouse(self, posizione):
-        
+        pass
