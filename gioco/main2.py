@@ -8,7 +8,7 @@ from sys import exit
 import math
 from Oggetti import snake_blu
 from Oggetti import snake_rosso
-from bottone import Bottone
+from bottone2 import Bottone
 from Oggetti import frutta
 from random import randint
 
