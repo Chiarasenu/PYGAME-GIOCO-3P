@@ -1,5 +1,5 @@
 import pygame
-VERDE = (19, 194, 75)
+VERDE = (59, 207, 100)
 WHITE = (255, 255, 255)
 
 class Bottone:
@@ -9,7 +9,7 @@ class Bottone:
         self.size = size
         self.testo = testo
 
-        self.colore_base = (200,200,200)
+        self.colore_base = (200, 200, 200)
         self.colore_chiaro = (255,255,255)
         self.colore = self.colore_base
 
