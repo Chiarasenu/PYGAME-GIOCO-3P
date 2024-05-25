@@ -4,6 +4,7 @@
 # - Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
 
 import pygame
+from pygame.locals import *
 from sys import exit
 import math
 from snake_blu import Snake_Blu
@@ -97,6 +98,22 @@ def menu():
                 elif bottone_multi.rect.collidepoint(event.pos):
                     bottone_multi.toggle()
                     multiplayer()
+        
+        # cambio colore se passo sopra i tasti singleplayer e multiplayer
+        pos = pygame.mouse.get_pos()
+        if bottone_single.rect.collidepoint(pos):
+            bottone_single.chiaro()
+        else:
+            bottone_single.base()
+        bottone_single.draw()
+        
+        pos = pygame.mouse.get_pos()
+        if bottone_multi.rect.collidepoint(pos):
+            bottone_multi.chiaro()
+        else:
+            bottone_multi.base()
+        bottone_multi.draw()
+            
 
         bottone_single.draw()
         bottone_multi.draw()        
