@@ -65,7 +65,7 @@ class Snake_Blu:
         self.nuovo_blocco = True
 
     def muovi_snake(self):
-        if self.nuovo_blocco == True:
+        if self.nuovo_corpo == True:
             copia_corpo = self.corpo[:]
             copia_corpo.insert(0, copia_corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
@@ -82,7 +82,7 @@ class Snake_Blu:
             if i == 0:
                 screen.blit(self.testa, rect_blocco)
             elif i == len(self.corpo) -1:
-                screen.blit(self.coda, rect_blocco)
+                screen.blit(self.codaE, rect_blocco)
             else:
                 # Calcola la differenza di posizione tra il blocco corrente e i blocchi precedente e successivo
                 blocco_precedente = self.corpo[i + 1] - blocco
