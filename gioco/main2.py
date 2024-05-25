@@ -34,16 +34,11 @@ SCREEN_HEIGHT = numero_celle * lato_celle / 2
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Snake')
 
-# immmagine
-sfondo = pygame.image.load('Gioco/Immagini/sfondo1.png')
-sfondo = pygame.transform.scale(sfondo, (1600, 800))
-sfondo_width = sfondo.get_width()
-sfondo_rect = sfondo.get_rect()
+AZZURRO = (54, 204, 227)
 
-# ogg_frutta = frutta(screen, [randint(0, numero_celle -1), randint(0, numero_celle -1)], lato_celle, enum_frutta.MELA.name, enum_frutta.MELA.value)
-
-# menù
-# due surface o una 
+# ogg_frutta = frutta(screen, [randint(0, numero_celle -1), 
+#  randint(0, numero_celle -1)], lato_celle, enum_frutta.MELA.name,
+#  enum_frutta.MELA.value)
 
 # bottone singleplayer
 bottone_single = Bottone(screen,
@@ -57,30 +52,56 @@ bottone_multi = Bottone(screen,
                         [450, 100], # size
                         "Multiplayer")
 
-# def menu():
-#     pygame.display.set_caption("MENÙ")
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
+# snake blu
+snake_b = snake_blu(lato_celle, screen)
 
-    bottone_single.blit(screen)        
-    pygame.display.update()
-    clock.tick(FPS)
+#snake rosso
+snake_r = snake_rosso(lato_celle, screen)
+
+def singleplayer():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        
+                
+        pygame.display.update()
+        clock.tick(FPS)
     
+
+def multiplayer():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        
+                
+        pygame.display.update()
+        clock.tick(FPS)
+    
+def menu():
+    pygame.display.set_caption("MENÙ")
+    while True:
+        screen.fill(AZZURRO)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if bottone_single.rect.collidepoint(event.pos):
+                    bottone_single.toggle()
+                    singleplayer()
+                elif bottone_multi.rect.collidepoint(event.pos):
+                    bottone_multi.toggle()
+                    multiplayer()
+
+        bottone_single.draw()
+        bottone_multi.draw()        
+        pygame.display.update()
+        clock.tick(FPS)
+        
         
 
-# game loop
-# while True:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             pygame.quit()
-#             exit()
-            
-#     pygame.display.update()
-#     clock.tick(FPS)
- 
-
-
-
+menu()
