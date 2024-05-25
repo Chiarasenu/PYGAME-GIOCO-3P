@@ -64,6 +64,7 @@ snake_r = Snake_Rosso()
 
 def singleplayer():
     while True:
+        pygame.display.set_caption("Singleplayer")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
