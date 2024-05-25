@@ -6,10 +6,10 @@
 import pygame
 from sys import exit
 import math
-from Oggetti import snake_blu
-from Oggetti import snake_rosso
+from snake_blu import Snake_Blu
+from snake_rosso import Snake_Rosso
 from bottone2 import Bottone
-from Oggetti import frutta
+from frutta import Frutta
 from random import randint
 
 # from enum import Enum
@@ -53,10 +53,11 @@ bottone_multi = Bottone(screen,
                         "Multiplayer")
 
 # snake blu
-snake_b = snake_blu(lato_celle, screen)
+snake_b = Snake_Blu()
 
 #snake rosso
-snake_r = snake_rosso(lato_celle, screen)
+snake_r = Snake_Rosso()
+
 
 def singleplayer():
     while True:

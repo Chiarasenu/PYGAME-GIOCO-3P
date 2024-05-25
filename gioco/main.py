@@ -5,8 +5,8 @@
 
 import pygame
 import math
-from Oggetti import snake_blu
-from Oggetti import snake_rosso
+from Gioco import snake_blu
+from Gioco import snake_rosso
 from bottone import Bottone
 
 pygame.init()

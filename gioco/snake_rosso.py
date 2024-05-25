@@ -9,26 +9,26 @@ class Snake_Rosso:
 
     # IMMAGINI
         # Testa
-        self.testaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_testaN.png').convert_alpha()
-        self.testaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_testaE.png').convert_alpha()
-        self.testaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_testaS.png').convert_alpha()
-        self.testaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_testaO.png').convert_alpha()
+        self.testaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_testaN.png').convert_alpha()
+        self.testaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_testaE.png').convert_alpha()
+        self.testaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_testaS.png').convert_alpha()
+        self.testaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_testaO.png').convert_alpha()
 
         # Corpo
-        self.corpoO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_corpo_orizzontale.png').convert_alpha()
-        self.corpoV_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_corpo_verticale.png').convert_alpha()
+        self.corpoO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_corpo_orizzontale.png').convert_alpha()
+        self.corpoV_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_corpo_verticale.png').convert_alpha()
 
         # Coda
-        self.codaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_codaN.png').convert_alpha()
-        self.codaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_codaE.png').convert_alpha()
-        self.codaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_codaS.png').convert_alpha()
-        self.codaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_codaO.png').convert_alpha()
+        self.codaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaN.png').convert_alpha()
+        self.codaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaE.png').convert_alpha()
+        self.codaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaS.png').convert_alpha()
+        self.codaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaO.png').convert_alpha()
 
         # Angoli
-        self.angoloNE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloNE.png').convert_alpha()
-        self.angoloNO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloNO.png').convert_alpha()
-        self.angoloSE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloSE.png').convert_alpha()
-        self.angoloSO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_rosso_angoloSO.png').convert_alpha()
+        self.angoloNE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_angoloNE.png').convert_alpha()
+        self.angoloNO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_angoloNO.png').convert_alpha()
+        self.angoloSE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_angoloSE.png').convert_alpha()
+        self.angoloSO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_angoloSO.png').convert_alpha()
 
     def update_testa(self):
         nuova_testa = self.corpo_r[1] - self.corpo_r[0]
