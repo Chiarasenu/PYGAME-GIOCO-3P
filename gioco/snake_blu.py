@@ -1,6 +1,14 @@
 import pygame
 from pygame.math import Vector2
 
+lato_celle = 40
+numero_celle = 30
+
+SCREEN_WIDTH = numero_celle * lato_celle
+SCREEN_HEIGHT = numero_celle * lato_celle / 2
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 
 class Snake_Blu:
     def __init__(self) -> None:

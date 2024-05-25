@@ -1,31 +1,38 @@
 from snake_blu import Snake_Blu
 from frutta2 import Frutta
-import gioco_snake
 import pygame
 
-class Main:
+lato_celle = 40
+numero_celle = 30
+
+SCREEN_WIDTH = numero_celle * lato_celle
+SCREEN_HEIGHT = numero_celle * lato_celle / 2
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+class c_MAIN:
     def __init__(self) -> None:
         self.snake = Snake_Blu()
         self.frutta = Frutta()
     
     def draw_erba(self):
         grass_color = (167,209,61)
-        for riga in range(gioco_snake.numero_celle):
+        for riga in range(numero_celle):
             if riga % 2 == 0: 
-                for col in range(gioco_snake.numero_celle):
+                for col in range(numero_celle):
                     if col % 2 == 0:
-                        grass_rect = pygame.Rect(col * gioco_snake.lato_celle,riga * gioco_snake.lato_celle, gioco_snake.lato_celle, gioco_snake.lato_celle)
-                        pygame.draw.rect(gioco_snake.screen,grass_color,grass_rect)
+                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                        pygame.draw.rect(screen,grass_color,grass_rect)
             else:
-                for col in range(gioco_snake.numero_celle):
+                for col in range(numero_celle):
                     if col % 2 != 0:
-                        grass_rect = pygame.Rect(col * gioco_snake.lato_celle,riga * gioco_snake.lato_celle, gioco_snake.lato_celle, gioco_snake.lato_celle)
-                        pygame.draw.rect(gioco_snake.screen,grass_color,grass_rect)			
+                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                        pygame.draw.rect(screen,grass_color,grass_rect)			
 
     def draw(self):
         self.draw_erba()
         self.frutta.draw_frutta()
-        self.snake.draw_snake()
+        self.snake.draw_snake(lato_celle, screen)
 
     def controllo_collisioni(self):
         if self.frutta.pos == self.snake.corpo[0]:

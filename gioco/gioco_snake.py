@@ -6,12 +6,13 @@
 import pygame
 from pygame.locals import *
 from sys import exit
-import math
+from pygame import Vector2
 from snake_blu import Snake_Blu
 from snake_rosso import Snake_Rosso
 from bottone import Bottone
 from frutta import Frutta
 from random import randint
+from classe_main import c_MAIN
 
 # from enum import Enum
  
@@ -61,18 +62,37 @@ snake_b = Snake_Blu()
 #snake rosso
 snake_r = Snake_Rosso()
 
+SCREEN_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(SCREEN_UPDATE,150)
 
-def singleplayer():
+main_game = c_MAIN()
+def singleplayer():  
     while True:
         pygame.display.set_caption("Singleplayer")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        
-                
+            if event.type == SCREEN_UPDATE:
+                main_game.update()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    if main_game.snake.direzione.y != 1:
+                        main_game.snake.direzione = Vector2(0,-1)
+                if event.key == pygame.K_RIGHT:
+                    if main_game.snake.direzione.x != -1:
+                        main_game.snake.direzione = Vector2(1,0)
+                if event.key == pygame.K_DOWN:
+                    if main_game.snake.direzione.y != -1:
+                        main_game.snake.direzione = Vector2(0,1)
+                if event.key == pygame.K_LEFT:
+                    if main_game.snake.direzione.x != 1:
+                        main_game.snake.direzione = Vector2(-1,0)
+
+        screen.fill((175,215,70))
+        main_game.draw()
         pygame.display.update()
-        clock.tick(FPS)
+        clock.tick(60)
     
 
 def multiplayer():
