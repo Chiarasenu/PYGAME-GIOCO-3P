@@ -40,6 +40,7 @@ class Bottone:
     def toggle(self):
         if self.colore == self.colore_base:
             self.colore = self.colore_chiaro
+            
         else:
             self.colore = self.colore_base
 

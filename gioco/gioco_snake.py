@@ -34,6 +34,8 @@ SCREEN_HEIGHT = numero_celle * lato_celle / 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Snake')
+schermo_gioco = pygame.image.load("gioco/Immagini/sfondo1.png")
+schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 
 AZZURRO = (54, 204, 227)
 
@@ -94,15 +96,19 @@ def menu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if bottone_single.rect.collidepoint(event.pos):
                     bottone_single.toggle()
+                    screen.blit(schermo_gioco, (0,0))
                     singleplayer()
+                    
                 elif bottone_multi.rect.collidepoint(event.pos):
                     bottone_multi.toggle()
+                    screen.blit(schermo_gioco, (0,0))
                     multiplayer()
         
         # cambio colore se passo sopra i tasti singleplayer e multiplayer
         pos = pygame.mouse.get_pos()
         if bottone_single.rect.collidepoint(pos):
             bottone_single.chiaro()
+            
         else:
             bottone_single.base()
         bottone_single.draw()
