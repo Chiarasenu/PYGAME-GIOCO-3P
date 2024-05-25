@@ -1,3 +1,53 @@
+from snake_blu import Snake_Blu
+from frutta2 import Frutta
+import gioco_snake
+import pygame
+
+class Main:
+    def __init__(self) -> None:
+        self.snake = Snake_Blu()
+        self.frutta = Frutta()
+    
+    def draw_erba(self):
+        grass_color = (167,209,61)
+        for riga in range(gioco_snake.numero_celle):
+            if riga % 2 == 0: 
+                for col in range(gioco_snake.numero_celle):
+                    if col % 2 == 0:
+                        grass_rect = pygame.Rect(col * gioco_snake.lato_celle,riga * gioco_snake.lato_celle, gioco_snake.lato_celle, gioco_snake.lato_celle)
+                        pygame.draw.rect(gioco_snake.screen,grass_color,grass_rect)
+            else:
+                for col in range(gioco_snake.numero_celle):
+                    if col % 2 != 0:
+                        grass_rect = pygame.Rect(col * gioco_snake.lato_celle,riga * gioco_snake.lato_celle, gioco_snake.lato_celle, gioco_snake.lato_celle)
+                        pygame.draw.rect(gioco_snake.screen,grass_color,grass_rect)			
+
+    def draw(self):
+        self.draw_erba()
+        self.frutta.draw_frutta()
+        self.snake.draw_snake()
+
+    def controllo_collisioni(self):
+        if self.frutta.pos == self.snake.corpo[0]:
+            self.frutta.randomizza()
+            self.snake.aggiugi_blocco()
+
+        for blocco in self.snake.corpo[1:]:
+            if blocco == self.frutta.pos:
+                self.frutta.randomizza()
+
+    def update(self):
+        self.snake.muovi_snake()
+        self.controllo_collisioni()
+    
+    
+    
+    
+
+
+
+
+
 # # #Serve
 # # - Menu che spieghi la diversa frutta
 # # - Modalita Singleplayer e Multiplayer
@@ -72,6 +122,3 @@
 #     pygame.display.update()
     
 # pygame.quit() 
-
-
-

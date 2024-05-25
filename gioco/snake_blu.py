@@ -1,6 +1,7 @@
 import pygame
 from pygame.math import Vector2
 
+
 class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
