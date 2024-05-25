@@ -7,7 +7,7 @@ import pygame
 import math
 from gioco import snake_blu
 from gioco import snake_rosso
-from bottone import Bottone
+
 
 pygame.init()
 clock = pygame.time.Clock()
