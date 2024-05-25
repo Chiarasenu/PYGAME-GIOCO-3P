@@ -9,7 +9,7 @@ from sys import exit
 import math
 from snake_blu import Snake_Blu
 from snake_rosso import Snake_Rosso
-from bottone2 import Bottone
+from bottone import Bottone
 from frutta import Frutta
 from random import randint
 
