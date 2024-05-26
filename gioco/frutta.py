@@ -19,7 +19,7 @@ class Frutta:
         return self.image
     
     def draw(self, lato_celle, screen):
-        self.display.blit(self.image, (self.rect.x, self.rect.y))
+        self.screen.blit(self.image, (self.rect.x, self.rect.y))
 
 
 

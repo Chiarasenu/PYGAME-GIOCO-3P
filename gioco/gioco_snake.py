@@ -75,19 +75,35 @@ def singleplayer():
                 exit()
             if event.type == SCREEN_UPDATE:
                 main_game.update()
+            
+            key = pygame.key.get_pressed()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
+                if key[K_w]:
                     if main_game.snake.direzione.y != 1:
-                        main_game.snake.direzione = Vector2(0,-1)
-                if event.key == pygame.K_RIGHT:
+                        main_game.snake.direzione = Vector2(0, -1)
+                if key[K_d]:
                     if main_game.snake.direzione.x != -1:
-                        main_game.snake.direzione = Vector2(1,0)
-                if event.key == pygame.K_DOWN:
+                        main_game.snake.direzione = Vector2(1, 0)
+                if key[K_s]:
                     if main_game.snake.direzione.y != -1:
-                        main_game.snake.direzione = Vector2(0,1)
-                if event.key == pygame.K_LEFT:
+                        main_game.snake.direzione = Vector2(0, 1)
+                if key[K_a]:
                     if main_game.snake.direzione.x != 1:
-                        main_game.snake.direzione = Vector2(-1,0)
+                        main_game.snake.direzione = Vector2(-1, 0)
+                
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_UP:
+            #         if main_game.snake.direzione.y != 1:
+            #             main_game.snake.direzione = Vector2(0,-1)
+            #     if event.key == pygame.K_RIGHT:
+            #         if main_game.snake.direzione.x != -1:
+            #             main_game.snake.direzione = Vector2(1,0)
+            #     if event.key == pygame.K_DOWN:
+            #         if main_game.snake.direzione.y != -1:
+            #             main_game.snake.direzione = Vector2(0,1)
+            #     if event.key == pygame.K_LEFT:
+            #         if main_game.snake.direzione.x != 1:
+            #             main_game.snake.direzione = Vector2(-1,0)
 
         screen.fill((175,215,70))
         main_game.draw()
@@ -113,14 +129,14 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                exit()
+                # exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if bottone_single.rect.collidepoint(event.pos):
+                if bottone_single.rect.collidepoint(pos):
                     bottone_single.toggle()
                     screen.blit(schermo_gioco, (0,0))
                     singleplayer()
                     
-                elif bottone_multi.rect.collidepoint(event.pos):
+                elif bottone_multi.rect.collidepoint(pos):
                     bottone_multi.toggle()
                     screen.blit(schermo_gioco, (0,0))
                     multiplayer()
