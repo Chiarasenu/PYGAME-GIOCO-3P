@@ -5,7 +5,7 @@ from pygame import Vector2
 from snake_blu import Snake_Blu
 from snake_rosso import Snake_Rosso
 from bottone import Bottone
-from frutta2 import Frutta
+from frutta import Frutta
 from random import randint
 
 pygame.init()

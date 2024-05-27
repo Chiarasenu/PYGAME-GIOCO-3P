@@ -2,31 +2,30 @@ import pygame
 from pygame.math import Vector2
 from random import randint
 
+lato_celle = 40
+numero_celle = 30
+
+SCREEN_WIDTH = numero_celle * lato_celle
+SCREEN_HEIGHT = numero_celle * lato_celle / 2
+
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+immagine_mela = pygame.image.load("Gioco/Immagini/Frutta/mela.png").convert_alpha()
+
+size_mela = (40, 40)
+
+mela = pygame.transform.scale(immagine_mela, size_mela)
 
 class Frutta:
-    def __init__(self, screen, pos, lato_celle, tipo, image) -> None:
-        # self.x = randint(0, numero_celle -1)
-        # self.y = randint(0, numero_celle -1)
-        self.pos = pos
-        self.lato_celle = lato_celle
-        self.tipo = tipo
+    def __init__(self):
+        self.randomizza()
 
-        self.image = pygame.image.load(image).convert_alpha()
-        self.image = pygame.transform.scale(self.image, self.lato_celle)
-        self.rect = pygame.Rect(pos[0], pos[1], self.image.get_width(), self.image.get_height())
+    def draw_frutta(self):
+        fruit_rect = pygame.Rect(int(self.pos.x * lato_celle),int(self.pos.y * lato_celle), lato_celle, lato_celle)
+        screen.blit(mela,fruit_rect)
+        pygame.draw.rect(screen,(126,166,114),fruit_rect)
 
-    def get_image(self):
-        return self.image
-    
-    def draw(self, lato_celle, screen):
-        self.screen.blit(self.image, (self.rect.x, self.rect.y))
-
-
-
-# Serve 
-# 1. la randomizzazione della posizione
-# 2. il rect
-# 3. la frutta diversa (non so se dobbiamo modificare 
-#    la classe direttamnete anche se dubito, perche diversi poteri), 
-#    (mela, mirtilli, banana, pera...)
-# 4. Disegnare il frutto
+    def randomizza(self):
+        self.x = randint(0, numero_celle - 1)
+        self.y = randint(0, numero_celle - 1)
+        self.pos = Vector2(self.x,self.y)
