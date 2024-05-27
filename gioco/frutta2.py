@@ -10,7 +10,11 @@ SCREEN_HEIGHT = numero_celle * lato_celle / 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-mela = pygame.image.load("Gioco/Immagini/Frutta/mela.png")
+mela = pygame.image.load("Gioco/Immagini/Frutta/mela.png").convert_alpha()
+
+size_mela = (40, 40)
+
+mela = pygame.transform.scale(mela, size_mela)
 
 class Frutta:
     def __init__(self):
