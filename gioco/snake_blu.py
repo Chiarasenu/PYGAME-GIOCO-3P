@@ -53,7 +53,7 @@ class Snake_Blu:
     def update_coda(self):
         nuova_coda = self.corpo[-2] - self.corpo[-1]
         if nuova_coda == Vector2(1,0):
-            self.testa = self.codaO
+            self.coda = self.codaO
         elif nuova_coda == Vector2(-1,0):
             self.coda = self.codaE
         elif nuova_coda == Vector2(0,1):
