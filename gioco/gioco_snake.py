@@ -111,7 +111,10 @@ def singleplayer():
                 exit()
             # if event.type == SCREEN_UPDATE:
                 
+                main_game.update()
+                # key = pygame.key.get_pressed()
             
+<<<<<<< HEAD
             key = pygame.key.get_pressed()
         
             if key[K_w]:
@@ -140,6 +143,34 @@ def singleplayer():
             #     if event.key == pygame.K_LEFT:
             #         if main_game.snake.direzione.x != 1:
             #             main_game.snake.direzione = Vector2(-1,0)
+=======
+                # if key[K_w]:
+                #     if main_game.snake.direzione.y != 1:
+                #         main_game.snake.direzione = Vector2(0, -1)
+                # if key[K_d]:
+                #     if main_game.snake.direzione.x != -1:
+                #         main_game.snake.direzione = Vector2(1, 0)
+                # if key[K_s]:
+                #     if main_game.snake.direzione.y != -1:
+                #         main_game.snake.direzione = Vector2(0, 1)
+                # if key[K_a]:
+                #     if main_game.snake.direzione.x != 1:
+                #         main_game.snake.direzione = Vector2(-1, 0)
+                    
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    if main_game.snake.direzione.y != 1:
+                        main_game.snake.direzione = Vector2(0,-1)
+                if event.key == pygame.K_RIGHT:
+                    if main_game.snake.direzione.x != -1:
+                        main_game.snake.direzione = Vector2(1,0)
+                if event.key == pygame.K_DOWN:
+                    if main_game.snake.direzione.y != -1:
+                        main_game.snake.direzione = Vector2(0,1)
+                if event.key == pygame.K_LEFT:
+                    if main_game.snake.direzione.x != 1:
+                        main_game.snake.direzione = Vector2(-1,0)
+>>>>>>> aa9d476 (.)
 
         screen.fill((175,215,70))
         draw()
@@ -202,3 +233,4 @@ def menu():
         
 
 menu()
+singleplayer
