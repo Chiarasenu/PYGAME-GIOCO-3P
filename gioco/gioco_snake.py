@@ -1,8 +1,3 @@
-# #Serve
-# - Menu che spieghi la diversa frutta
-# - Modalita Singleplayer e Multiplayer
-# - Due modalita, normale (solo mela) e Tuttifrutti (tutti i frutti)
-
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -13,14 +8,6 @@ from bottone import Bottone
 from frutta2 import Frutta
 from random import randint
 from classe_main import c_MAIN
-
-# from enum import Enum
- 
-# class enum_frutta(Enum):
-#     MELA = 'Gioco/Immagini/Frutta/mela.png'
-#     CILIEGIA = 'Gioco/Immagini/Frutta/mela.png'
-#     LIMONE = 'Gioco/Immagini/Frutta/mela.png'
-#     ANGURIA = 'Gioco/Immagini/Frutta/mela.png'
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -40,10 +27,6 @@ schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 
 AZZURRO = (54, 204, 227)
 
-# ogg_frutta = frutta(screen, [randint(0, numero_celle -1), 
-#  randint(0, numero_celle -1)], lato_celle, enum_frutta.MELA.name,
-#  enum_frutta.MELA.value)
-
 # bottone singleplayer
 bottone_single = Bottone(screen,
                         [100, 300], # pos
@@ -55,12 +38,6 @@ bottone_multi = Bottone(screen,
                         [650, 300], # pos
                         [450, 100], # size
                         "Multiplayer")
-
-# snake blu
-# snake_b = Snake_Blu()
-
-# #snake rosso
-# snake_r = Snake_Rosso()
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
@@ -172,10 +149,10 @@ def singleplayer():
         #                 main_game.snake.direzione = Vector2(-1,0)
 
 
-        # screen.fill((175,215,70))
-        # draw()
-        # pygame.display.update()
-        # clock.tick(60)
+        screen.fill((175,215,70))
+        draw()
+        pygame.display.update()
+        clock.tick(60)
     
 
 def multiplayer():
@@ -233,4 +210,4 @@ def menu():
         
 
 menu()
-singleplayer
+singleplayer()
