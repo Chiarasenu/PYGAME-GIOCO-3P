@@ -57,10 +57,10 @@ bottone_multi = Bottone(screen,
                         "Multiplayer")
 
 # snake blu
-snake_b = Snake_Blu()
+# snake_b = Snake_Blu()
 
-#snake rosso
-snake_r = Snake_Rosso()
+# #snake rosso
+# snake_r = Snake_Rosso()
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
@@ -74,10 +74,10 @@ def singleplayer():
                 pygame.quit()
                 exit()
             if event.type == SCREEN_UPDATE:
-                main_game.update()
+                
             
-            key = pygame.key.get_pressed()
-            if event.type == pygame.KEYDOWN:
+                key = pygame.key.get_pressed()
+            
                 if key[K_w]:
                     if main_game.snake.direzione.y != 1:
                         main_game.snake.direzione = Vector2(0, -1)
@@ -90,7 +90,7 @@ def singleplayer():
                 if key[K_a]:
                     if main_game.snake.direzione.x != 1:
                         main_game.snake.direzione = Vector2(-1, 0)
-                
+                    main_game.update()
             # if event.type == pygame.KEYDOWN:
             #     if event.key == pygame.K_UP:
             #         if main_game.snake.direzione.y != 1:
