@@ -28,10 +28,10 @@ class Snake_Rosso:
         self.corpoV_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_corpo_verticale.png').convert_alpha()
 
         # Coda
-        self.codaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaN.png').convert_alpha()
-        self.codaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaE.png').convert_alpha()
-        self.codaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaS.png').convert_alpha()
-        self.codaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaO.png').convert_alpha()
+        self.codaN_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaS.png').convert_alpha()
+        self.codaE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaO.png').convert_alpha()
+        self.codaS_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaN.png').convert_alpha()
+        self.codaO_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_codaE.png').convert_alpha()
 
         # Angoli
         self.angoloNE_r = pygame.image.load('Gioco/Immagini/PartiSnake/Rosso/snake_rosso_angoloNE.png').convert_alpha()
