@@ -27,6 +27,19 @@ schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 
 AZZURRO = (54, 204, 227)
 
+<<<<<<< HEAD
+=======
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+# ogg_frutta = frutta(screen, [randint(0, numero_celle -1), 
+#  randint(0, numero_celle -1)], lato_celle, enum_frutta.MELA.name,
+#  enum_frutta.MELA.value)
+
+>>>>>>> 71184b6 (.)
 # bottone singleplayer
 bottone_single = Bottone(screen,
                         [100, 300], # pos
@@ -39,45 +52,59 @@ bottone_multi = Bottone(screen,
                         [450, 100], # size
                         "Multiplayer")
 
+<<<<<<< HEAD
+=======
+#snake rosso
+snake_r = Snake_Rosso()
+
+
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>>>>>>> 71184b6 (.)
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
 
-snake_blu = Snake_Blu()
-snake_rosso = Snake_Rosso()
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+snake = Snake_Blu()
 frutta = Frutta()
 
 def draw_erba():
-        grass_color = (167,209,61)
-        for riga in range(numero_celle):
-            if riga % 2 == 0: 
-                for col in range(numero_celle):
-                    if col % 2 == 0:
-                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
-                        pygame.draw.rect(screen,grass_color,grass_rect)
-            else:
-                for col in range(numero_celle):
-                    if col % 2 != 0:
-                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
-                        pygame.draw.rect(screen,grass_color,grass_rect)	
+    grass_color = (167,209,61)
+    for riga in range(numero_celle):
+        if riga % 2 == 0: 
+            for col in range(numero_celle):
+                if col % 2 == 0:
+                    grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                    pygame.draw.rect(screen,grass_color,grass_rect)
+        else:
+            for col in range(numero_celle):
+                if col % 2 != 0:
+                    grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                    pygame.draw.rect(screen,grass_color,grass_rect)			
 
 def draw():
-        draw_erba()
-        frutta.draw_frutta()
-        snake_blu.draw_snake(lato_celle, screen)
+    draw_erba()
+    frutta.draw_frutta()
+    snake.draw_snake(lato_celle, screen)
 
 def controllo_collisioni():
-        if frutta.pos == snake_blu.corpo[0]:
+    if frutta.pos == snake.corpo[0]:
+        frutta.randomizza()
+        snake.aggiugi_blocco()
+
+    for blocco in snake.corpo[1:]:
+        if blocco == frutta.pos:
             frutta.randomizza()
-            snake_blu.aggiugi_blocco()
 
-        for blocco in snake_blu.corpo[1:]:
-            if blocco == frutta.pos:
-                frutta.randomizza()
-    
 def update():
-        snake_blu.muovi_snake()
-        controllo_collisioni()
+    snake.muovi_snake()
+    controllo_collisioni()
 
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def singleplayer():  
     while True:
@@ -86,74 +113,34 @@ def singleplayer():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            # if event.type == SCREEN_UPDATE:
-                
-                main_game.update()
-                # key = pygame.key.get_pressed()
-            
-
-            key = pygame.key.get_pressed()
-        
-            if key[K_w]:
-                if snake_blu.direzione.y != 1:
-                    snake_blu.direzione = Vector2(0, -1)
-            if key[K_d]:
-                if snake_blu.direzione.x != -1:
-                    snake_blu.direzione = Vector2(1, 0)
-            if key[K_s]:
-                if snake_blu.direzione.y != -1:
-                    snake_blu.direzione = Vector2(0, 1)
-            if key[K_a]:
-                if snake_blu.direzione.x != 1:
-                    snake_blu.direzione = Vector2(-1, 0)
+            if event.type == SCREEN_UPDATE:
                 update()
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_UP:
-            #         if main_game.snake.direzione.y != 1:
-            #             main_game.snake.direzione = Vector2(0,-1)
-            #     if event.key == pygame.K_RIGHT:
-            #         if main_game.snake.direzione.x != -1:
-            #             main_game.snake.direzione = Vector2(1,0)
-            #     if event.key == pygame.K_DOWN:
-            #         if main_game.snake.direzione.y != -1:
-            #             main_game.snake.direzione = Vector2(0,1)
-            #     if event.key == pygame.K_LEFT:
-            #         if main_game.snake.direzione.x != 1:
-            #             main_game.snake.direzione = Vector2(-1,0)
-
-                # if key[K_w]:
-                #     if main_game.snake.direzione.y != 1:
-                #         main_game.snake.direzione = Vector2(0, -1)
-                # if key[K_d]:
-                #     if main_game.snake.direzione.x != -1:
-                #         main_game.snake.direzione = Vector2(1, 0)
-                # if key[K_s]:
-                #     if main_game.snake.direzione.y != -1:
-                #         main_game.snake.direzione = Vector2(0, 1)
-                # if key[K_a]:
-                #     if main_game.snake.direzione.x != 1:
-        #         #         main_game.snake.direzione = Vector2(-1, 0)
-                    
-        #     if event.type == pygame.KEYDOWN:
-        #         if event.key == pygame.K_UP:
-        #             if main_game.snake.direzione.y != 1:
-        #                 main_game.snake.direzione = Vector2(0,-1)
-        #         if event.key == pygame.K_RIGHT:
-        #             if main_game.snake.direzione.x != -1:
-        #                 main_game.snake.direzione = Vector2(1,0)
-        #         if event.key == pygame.K_DOWN:
-        #             if main_game.snake.direzione.y != -1:
-        #                 main_game.snake.direzione = Vector2(0,1)
-        #         if event.key == pygame.K_LEFT:
-        #             if main_game.snake.direzione.x != 1:
-        #                 main_game.snake.direzione = Vector2(-1,0)
-
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_w and snake.direzione.y != 1:
+                    snake.direzione = Vector2(0, -1)
+                if event.key == pygame.K_d and snake.direzione.x != -1:
+                    snake.direzione = Vector2(1, 0)
+                if event.key == pygame.K_s and snake.direzione.y != -1:
+                    snake.direzione = Vector2(0, 1)
+                if event.key == pygame.K_a and snake.direzione.x != 1:
+                    snake.direzione = Vector2(-1, 0)
 
         screen.fill((175,215,70))
         draw()
         pygame.display.update()
         clock.tick(60)
+
+<<<<<<< HEAD
+
+        screen.fill((175,215,70))
+        draw()
+        pygame.display.update()
+        clock.tick(60)
+=======
+singleplayer()
+>>>>>>> 71184b6 (.)
     
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def multiplayer():
     while True:
@@ -165,6 +152,11 @@ def multiplayer():
                 
         pygame.display.update()
         clock.tick(FPS)
+        
+        
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
     
 def menu():
     pygame.display.set_caption("MENÙ")
@@ -208,6 +200,12 @@ def menu():
         clock.tick(FPS)
         
         
+        
+        
 
+<<<<<<< HEAD
 menu()
 singleplayer()
+=======
+menu()
+>>>>>>> 71184b6 (.)

@@ -13,8 +13,9 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
-        self.direzione = Vector2(0,0)
+        self.direzione = Vector2(1,0)
         self.nuovo_corpo = False
+ 
 
     # IMMAGINI
         # Testa
@@ -39,41 +40,58 @@ class Snake_Blu:
         self.angoloSE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSE.png').convert_alpha()
         self.angoloSO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSO.png').convert_alpha()
 
-    def update_testa(self):
-        nuova_testa = self.corpo[1] - self.corpo[0]
-        if nuova_testa == Vector2(1,0):
-            self.testa = self.testaO
-        elif nuova_testa == Vector2(-1,0):
-            self.testa = self.testaE
-        elif nuova_testa == Vector2(0,1):
-            self.testa = self.testaN
-        elif nuova_testa == Vector2(0,-1):
-            self.testa = self.testaS
+    # def update_testa(self):
+    #     nuova_testa = self.corpo[1] - self.corpo[0]
+    #     if nuova_testa == Vector2(1,0):
+    #         self.testa = self.testaO
+    #     elif nuova_testa == Vector2(-1,0):
+    #         self.testa = self.testaE
+    #     elif nuova_testa == Vector2(0,1):
+    #         self.testa = self.testaN
+    #     elif nuova_testa == Vector2(0,-1):
+    #         self.testa = self.testaS
 
-    def update_coda(self):
-        nuova_coda = self.corpo[-2] - self.corpo[-1]
-        if nuova_coda == Vector2(1,0):
-            self.coda = self.codaO
-        elif nuova_coda == Vector2(-1,0):
-            self.coda = self.codaE
-        elif nuova_coda == Vector2(0,1):
-            self.coda = self.codaN
-        elif nuova_coda == Vector2(0,-1):
-            self.coda = self.codaS
+    # def update_coda(self):
+    #     nuova_coda = self.corpo[-2] - self.corpo[-1]
+    #     if nuova_coda == Vector2(1,0):
+    #         self.coda = self.codaO
+    #     elif nuova_coda == Vector2(-1,0):
+    #         self.coda = self.codaE
+    #     elif nuova_coda == Vector2(0,1):
+    #         self.coda = self.codaN
+    #     elif nuova_coda == Vector2(0,-1):
+    #         self.coda = self.codaS
 
     def aggiugi_blocco(self):
         self.nuovo_blocco = True
+        
+
+    
+    def update(self):
+        new_body = self.body[:-1]
+        new_body.insert(0, new_body[0] + self.direzione)
+        self.body = new_body
+    
+#     def draw(self, screen):
+#         for block in self.body:
+#             x = int(block.x * 20)
+#             y = int(block.y * 20)
+#             block_rect = pygame.Rect(x, y, 20, 20)
+#             pygame.draw.rect(screen, (0, 255, 0), block_rect)
 
     def muovi_snake(self):
         if self.nuovo_corpo == True:
-            copia_corpo = self.corpo[:]
+            copia_corpo = self.corpo[:-1]
             copia_corpo.insert(0, copia_corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
-            self.nuovo_blocco = False
+            # self.nuovo_blocco = False
 
     def draw_snake(self, lato_cella, screen):
-        self.update_testa()
-        self.update_coda()
+        for block in self.body:
+            x = int(block.x * 20)
+            y = int(block.y * 20)
+            block_rect = pygame.Rect(x, y, 20, 20)
+            pygame.draw.rect(screen, (0, 255, 0), block_rect)
 
         for i, blocco in enumerate(self.corpo):
             pos_x = int(blocco.x * lato_cella)
