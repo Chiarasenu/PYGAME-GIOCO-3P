@@ -86,27 +86,25 @@ def singleplayer():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            # if event.type == SCREEN_UPDATE:
-                
-                main_game.update()
+            if event.type == SCREEN_UPDATE:
+                update()
                 # key = pygame.key.get_pressed()
             
 
-            key = pygame.key.get_pressed()
-        
-            if key[K_w]:
-                if snake_blu.direzione.y != 1:
-                    snake_blu.direzione = Vector2(0, -1)
-            if key[K_d]:
-                if snake_blu.direzione.x != -1:
-                    snake_blu.direzione = Vector2(1, 0)
-            if key[K_s]:
-                if snake_blu.direzione.y != -1:
-                    snake_blu.direzione = Vector2(0, 1)
-            if key[K_a]:
-                if snake_blu.direzione.x != 1:
-                    snake_blu.direzione = Vector2(-1, 0)
-                update()
+        key = pygame.key.get_pressed()
+        if key[K_w]:
+            if snake_blu.direzione.y != 1:
+                snake_blu.direzione = Vector2(0, -1)
+        if key[K_d]:
+            if snake_blu.direzione.x != -1:
+                snake_blu.direzione = Vector2(1, 0)
+        if key[K_s]:
+            if snake_blu.direzione.y != -1:
+                snake_blu.direzione = Vector2(0, 1)
+        if key[K_a]:
+            if snake_blu.direzione.x != 1:
+                snake_blu.direzione = Vector2(-1, 0)
+            update()
             # if event.type == pygame.KEYDOWN:
             #     if event.key == pygame.K_UP:
             #         if main_game.snake.direzione.y != 1:

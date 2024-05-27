@@ -13,7 +13,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
-        self.direzione = Vector2(0,0)
+        self.direzione = Vector2(1,0)
         self.nuovo_corpo = False
 
     # IMMAGINI
@@ -65,11 +65,15 @@ class Snake_Blu:
         self.nuovo_blocco = True
 
     def muovi_snake(self):
-        if self.nuovo_corpo == True:
+        if self.nuovo_corpo:
             copia_corpo = self.corpo[:]
             copia_corpo.insert(0, copia_corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
-            self.nuovo_blocco = False
+            self.nuovo_corpo = False
+        else:
+            copia_corpo = self.corpo[:-1]
+            copia_corpo.insert(0, self.corpo[0] + self.direzione)
+            self.corpo = copia_corpo[:]
 
     def draw_snake(self, lato_cella, screen):
         self.update_testa()
