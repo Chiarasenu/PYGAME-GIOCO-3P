@@ -10,7 +10,7 @@ from pygame import Vector2
 from snake_blu import Snake_Blu
 from snake_rosso import Snake_Rosso
 from bottone import Bottone
-from frutta import Frutta
+from frutta2 import Frutta
 from random import randint
 from classe_main import c_MAIN
 
@@ -65,7 +65,43 @@ bottone_multi = Bottone(screen,
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
 
-main_game = c_MAIN()
+snake_blu = Snake_Blu()
+snake_rosso = Snake_Rosso()
+frutta = Frutta()
+
+def draw_erba():
+        grass_color = (167,209,61)
+        for riga in range(numero_celle):
+            if riga % 2 == 0: 
+                for col in range(numero_celle):
+                    if col % 2 == 0:
+                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                        pygame.draw.rect(screen,grass_color,grass_rect)
+            else:
+                for col in range(numero_celle):
+                    if col % 2 != 0:
+                        grass_rect = pygame.Rect(col * lato_celle,riga * lato_celle, lato_celle, lato_celle)
+                        pygame.draw.rect(screen,grass_color,grass_rect)	
+
+def draw():
+        draw_erba()
+        frutta.draw_frutta()
+        snake_blu.draw_snake(lato_celle, screen)
+
+def controllo_collisioni():
+        if frutta.pos == snake_blu.corpo[0]:
+            frutta.randomizza()
+            snake_blu.aggiugi_blocco()
+
+        for blocco in snake_blu.corpo[1:]:
+            if blocco == frutta.pos:
+                frutta.randomizza()
+    
+def update():
+        snake_blu.muovi_snake()
+        controllo_collisioni()
+
+
 def singleplayer():  
     while True:
         pygame.display.set_caption("Singleplayer")
@@ -73,24 +109,24 @@ def singleplayer():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            if event.type == SCREEN_UPDATE:
+            # if event.type == SCREEN_UPDATE:
                 
             
-                key = pygame.key.get_pressed()
-            
-                if key[K_w]:
-                    if main_game.snake.direzione.y != 1:
-                        main_game.snake.direzione = Vector2(0, -1)
-                if key[K_d]:
-                    if main_game.snake.direzione.x != -1:
-                        main_game.snake.direzione = Vector2(1, 0)
-                if key[K_s]:
-                    if main_game.snake.direzione.y != -1:
-                        main_game.snake.direzione = Vector2(0, 1)
-                if key[K_a]:
-                    if main_game.snake.direzione.x != 1:
-                        main_game.snake.direzione = Vector2(-1, 0)
-                    main_game.update()
+            key = pygame.key.get_pressed()
+        
+            if key[K_w]:
+                if snake_blu.direzione.y != 1:
+                    snake_blu.direzione = Vector2(0, -1)
+            if key[K_d]:
+                if snake_blu.direzione.x != -1:
+                    snake_blu.direzione = Vector2(1, 0)
+            if key[K_s]:
+                if snake_blu.direzione.y != -1:
+                    snake_blu.direzione = Vector2(0, 1)
+            if key[K_a]:
+                if snake_blu.direzione.x != 1:
+                    snake_blu.direzione = Vector2(-1, 0)
+                update()
             # if event.type == pygame.KEYDOWN:
             #     if event.key == pygame.K_UP:
             #         if main_game.snake.direzione.y != 1:
@@ -106,7 +142,7 @@ def singleplayer():
             #             main_game.snake.direzione = Vector2(-1,0)
 
         screen.fill((175,215,70))
-        main_game.draw()
+        draw()
         pygame.display.update()
         clock.tick(60)
     
