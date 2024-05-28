@@ -55,7 +55,7 @@ class Snake_Blu:
         if nuova_coda == Vector2(1,0):
             self.coda = self.codaE
         elif nuova_coda == Vector2(-1,0):
-            self.coda = self.codaE
+            self.coda = self.codaO
         elif nuova_coda == Vector2(0,1):
             self.coda = self.codaN
         elif nuova_coda == Vector2(0,-1):
