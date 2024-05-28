@@ -100,7 +100,7 @@ def singleplayer():
         screen.fill((175, 215, 70))
         draw()
         pygame.display.update()
-        clock.tick(60)
+        clock.tick(FPS)
 
 def multiplayer():
     while True:
