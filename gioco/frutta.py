@@ -15,14 +15,13 @@ class Frutta:
     def __init__(self):
         self.randomizza()
         immagine_mela = pygame.image.load("Gioco/Immagini/Frutta/mela.png").convert_alpha()
-        size_mela = (40, 40)
-        self.mela = pygame.transform.scale(immagine_mela, size_mela)
-
+        #size_mela = (40, 40)
+        self.mela = pygame.transform.scale_by(immagine_mela, 0.3125)
 
     def draw_frutta(self):
         fruit_rect = pygame.Rect(int(self.pos.x * lato_celle),int(self.pos.y * lato_celle), lato_celle, lato_celle)
+        pygame.draw.rect(screen, (167, 209, 61),fruit_rect)
         screen.blit(self.mela,fruit_rect)
-        pygame.draw.rect(screen,(126,166,114),fruit_rect)
 
     def randomizza(self):
         self.x = randint(0, numero_celle - 1)
