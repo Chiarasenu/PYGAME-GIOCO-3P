@@ -39,27 +39,7 @@ class Snake_Blu:
         self.angoloSE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSE.png').convert_alpha()
         self.angoloSO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSO.png').convert_alpha()
 
-    def update_testa(self):
-        nuova_testa = self.corpo[1] - self.corpo[0]
-        if nuova_testa == Vector2(1,0):
-            self.testa = self.testaO
-        elif nuova_testa == Vector2(-1,0):
-            self.testa = self.testaE
-        elif nuova_testa == Vector2(0,1):
-            self.testa = self.testaN
-        elif nuova_testa == Vector2(0,-1):
-            self.testa = self.testaS
-
-    def update_coda(self):
-        nuova_coda = self.corpo[-2] - self.corpo[-1]
-        if nuova_coda == Vector2(1,0):
-            self.coda = self.codaE
-        elif nuova_coda == Vector2(-1,0):
-            self.coda = self.codaO
-        elif nuova_coda == Vector2(0,1):
-            self.coda = self.codaN
-        elif nuova_coda == Vector2(0,-1):
-            self.coda = self.codaS
+    
 
     def aggiugi_blocco(self):
         self.nuovo_blocco = True
@@ -114,7 +94,27 @@ class Snake_Blu:
                     elif (blocco_precedente.x == 1 and blocco_successivo.y == 1) or (blocco_precedente.y == 1 and blocco_successivo.x == 1):
                         # Disegna l'angolo in basso a destra
                         screen.blit(self.angoloSE, rect_blocco)
+    def update_testa(self):
+        nuova_testa = self.corpo[1] - self.corpo[0]
+        if nuova_testa == Vector2(1,0):
+            self.testa = self.testaO
+        elif nuova_testa == Vector2(-1,0):
+            self.testa = self.testaE
+        elif nuova_testa == Vector2(0,1):
+            self.testa = self.testaN
+        elif nuova_testa == Vector2(0,-1):
+            self.testa = self.testaS
 
+    def update_coda(self):
+        nuova_coda = self.corpo[-2] - self.corpo[-1]
+        if nuova_coda == Vector2(1,0):
+            self.coda = self.codaE
+        elif nuova_coda == Vector2(-1,0):
+            self.coda = self.codaO
+        elif nuova_coda == Vector2(0,1):
+            self.coda = self.codaN
+        elif nuova_coda == Vector2(0,-1):
+            self.coda = self.codaS
     def reset(self):
         self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
         self.direction = Vector2(0,0)
