@@ -51,7 +51,7 @@ class Snake_Blu:
             self.testa = self.testaS
 
     def update_coda(self):
-        nuova_coda = self.corpo[1] - self.corpo[0]
+        nuova_coda = self.corpo[-2] - self.corpo[-1]
         if nuova_coda == Vector2(1,0):
             self.coda = self.codaE
         elif nuova_coda == Vector2(-1,0):
@@ -115,3 +115,6 @@ class Snake_Blu:
                         # Disegna l'angolo in basso a destra
                         screen.blit(self.angoloSE, rect_blocco)
 
+    def reset(self):
+        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
+        self.direction = Vector2(0,0)
