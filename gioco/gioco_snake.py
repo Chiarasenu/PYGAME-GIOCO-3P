@@ -34,6 +34,12 @@ bottone_play = Bottone(screen,
                          [500, 100],  # size
                          "Gioca")
 
+# bottone singleplayer
+bottone_reset = Bottone(screen,
+                         [350, 400],  # pos
+                         [500, 100],  # size
+                         "Reset")
+
 # bottone multiplayer
 # bottone_multi = Bottone(screen,
 #                         [650, 300],  # pos
@@ -99,20 +105,42 @@ def singleplayer():
         if key[K_a] and snake_blu.direzione != Vector2(1, 0):
             snake_blu.direzione = Vector2(-1, 0)
 
+        if not 0 <= snake_blu.corpo[0].x < numero_celle or not 0 <= snake_blu.corpo[0].y < numero_celle:
+            game_over()
+        for blocco in snake_blu.corpo[1:]:
+            if blocco == snake_blu.corpo[0]:
+                game_over()
+
         screen.fill((175, 215, 70))
         draw()
         pygame.display.update()
         clock.tick(FPS)
 
-# def multiplayer():
-#     while True:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 pygame.quit()
-#                 exit()
+def game_over():
+    pygame.display.set_caption("GAME OVER")
+    while True:
+        screen.blit(sfondo_menu, (0, 0))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if bottone_reset.rect.collidepoint(pos):
+                    bottone_reset.toggle()
+                    screen.blit(schermo_gioco, (0, 0))
 
-#         pygame.display.update()
-#         clock.tick(FPS)
+                    singleplayer()
+
+        # cambio colore se passo sopra i tasti singleplayer e multiplayer
+        pos = pygame.mouse.get_pos()
+        if bottone_reset.rect.collidepoint(pos):
+            bottone_reset.chiaro()
+        else:
+            bottone_reset.base()
+        bottone_reset.draw()
+
+        pygame.display.update()
+        clock.tick(FPS)
 
 def menu():
     pygame.display.set_caption("MENÙ")
@@ -128,10 +156,6 @@ def menu():
                     screen.blit(schermo_gioco, (0, 0))
                     singleplayer()
 
-                # elif bottone_multi.rect.collidepoint(pos):
-                #     bottone_multi.toggle()
-                #     screen.blit(schermo_gioco, (0, 0))
-                #     multiplayer()
 
         # cambio colore se passo sopra i tasti singleplayer e multiplayer
         pos = pygame.mouse.get_pos()
