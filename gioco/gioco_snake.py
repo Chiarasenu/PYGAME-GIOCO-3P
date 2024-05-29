@@ -27,16 +27,16 @@ schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 AZZURRO = (54, 204, 227)
 
 # bottone singleplayer
-bottone_single = Bottone(screen,
-                         [100, 300],  # pos
-                         [450, 100],  # size
-                         "Singleplayer")
+bottone_play = Bottone(screen,
+                         [350, 400],  # pos
+                         [500, 100],  # size
+                         "Gioca")
 
 # bottone multiplayer
-bottone_multi = Bottone(screen,
-                        [650, 300],  # pos
-                        [450, 100],  # size
-                        "Multiplayer")
+# bottone_multi = Bottone(screen,
+#                         [650, 300],  # pos
+#                         [450, 100],  # size
+#                         "Multiplayer")
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
@@ -102,15 +102,15 @@ def singleplayer():
         pygame.display.update()
         clock.tick(FPS)
 
-def multiplayer():
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
+# def multiplayer():
+#     while True:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 pygame.quit()
+#                 exit()
 
-        pygame.display.update()
-        clock.tick(FPS)
+#         pygame.display.update()
+#         clock.tick(FPS)
 
 def menu():
     pygame.display.set_caption("MENÙ")
@@ -121,33 +121,33 @@ def menu():
                 pygame.quit()
                 # exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if bottone_single.rect.collidepoint(pos):
-                    bottone_single.toggle()
+                if bottone_play.rect.collidepoint(pos):
+                    bottone_play.toggle()
                     screen.blit(schermo_gioco, (0, 0))
                     singleplayer()
 
-                elif bottone_multi.rect.collidepoint(pos):
-                    bottone_multi.toggle()
-                    screen.blit(schermo_gioco, (0, 0))
-                    multiplayer()
+                # elif bottone_multi.rect.collidepoint(pos):
+                #     bottone_multi.toggle()
+                #     screen.blit(schermo_gioco, (0, 0))
+                #     multiplayer()
 
         # cambio colore se passo sopra i tasti singleplayer e multiplayer
         pos = pygame.mouse.get_pos()
-        if bottone_single.rect.collidepoint(pos):
-            bottone_single.chiaro()
+        if bottone_play.rect.collidepoint(pos):
+            bottone_play.chiaro()
         else:
-            bottone_single.base()
-        bottone_single.draw()
+            bottone_play.base()
+        bottone_play.draw()
 
-        pos = pygame.mouse.get_pos()
-        if bottone_multi.rect.collidepoint(pos):
-            bottone_multi.chiaro()
-        else:
-            bottone_multi.base()
-        bottone_multi.draw()
+        # pos = pygame.mouse.get_pos()
+        # if bottone_multi.rect.collidepoint(pos):
+        #     bottone_multi.chiaro()
+        # else:
+        #     bottone_multi.base()
+        # bottone_multi.draw()
 
-        bottone_single.draw()
-        bottone_multi.draw()
+        bottone_play.draw()
+        # bottone_multi.draw()
         pygame.display.update()
         clock.tick(FPS)
 
