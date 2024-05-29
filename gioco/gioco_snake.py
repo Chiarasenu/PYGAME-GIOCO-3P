@@ -1,3 +1,5 @@
+# IMPORTAZIONI -------------------------------------------------------------------------------------- #
+
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -8,11 +10,13 @@ from bottone import Bottone
 from frutta import Frutta
 from random import randint
 
+# INIZIALIZZAZIONE ---------------------------------------------------------------------------------- #
+
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
 
-# schermo
+# SCHERMO ------------------------------------------------------------------------------------------- #
 numero_celle = 30
 lato_celle = 40
 
@@ -28,35 +32,35 @@ sfondo_menu = pygame.image.load("gioco/immagini/snake_principale.png")
 sfondo_menu = pygame.transform.scale(sfondo_menu, (1200, 600))
 AZZURRO = (54, 204, 227)
 
-# Suoni
+SCREEN_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(SCREEN_UPDATE, 150)
+
+# SUONI --------------------------------------------------------------------------------------------- #
 suono_mangia = pygame.mixer.Sound("Gioco/MusicaSuoni/crunch.wav")
 musica = pygame.mixer.Sound("Gioco/MusicaSuoni/pixelated-dreams-206019.mp3")
 
-# bottone singleplayer
+# BOTTONI ------------------------------------------------------------------------------------------- #
 bottone_play = Bottone(screen,
                         [350, 400],  # pos
                         [500, 100],  # size
                         "gioca")
 
-# bottone reset
 bottone_reset = Bottone(screen,
                         [100, 400],  # pos
                         [450, 100],  # size
                         "reset")
 
-# bottone reset
 bottone_quit = Bottone(screen,
                         [100, 400],  # pos
                         [450, 100],  # size
                         "quit")
 
-SCREEN_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(SCREEN_UPDATE, 150)
-
+# ASSEGNAZIONI CLASSI ------------------------------------------------------------------------------- #
 snake_blu = Snake_Blu()
 snake_rosso = Snake_Rosso()
 frutta = Frutta()
 
+# FUNZIONI ------------------------------------------------------------------------------------------ #
 def draw_erba():
     grass_color = (167, 209, 61)
     for riga in range(numero_celle):
@@ -89,6 +93,10 @@ def controllo_collisioni():
 def update():
     snake_blu.muovi_snake()
     controllo_collisioni()
+
+
+# FUNZIONI DEL GIOCO -------------------------------------------------------------------------------- #
+
 
 def singleplayer():
     while True:
