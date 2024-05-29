@@ -14,6 +14,7 @@ class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
         self.direzione = Vector2(1,0)
+
         self.nuovo_corpo = False
 
     # IMMAGINI
@@ -29,9 +30,9 @@ class Snake_Blu:
 
         # Coda
         self.codaN = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaS.png').convert_alpha()
-        self.codaE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaO.png').convert_alpha()
+        self.codaE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaE.png').convert_alpha()
         self.codaS = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaN.png').convert_alpha()
-        self.codaO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaE.png').convert_alpha()
+        self.codaO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_codaO.png').convert_alpha()
 
         # Angoli
         self.angoloNE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloNE.png').convert_alpha()
@@ -54,6 +55,31 @@ class Snake_Blu:
             copia_corpo = self.corpo[:-1]
             copia_corpo.insert(0, self.corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
+            
+    def update_testa(self):
+        nuova_testa = self.corpo[0] - self.corpo[1]
+        if nuova_testa == Vector2(1,0):
+            self.testa = self.testaE
+        elif nuova_testa == Vector2(-1,0):
+            self.testa = self.testaO
+        elif nuova_testa == Vector2(0,1):
+            self.testa = self.testaS
+        elif nuova_testa == Vector2(0,-1):
+            self.testa = self.testaN
+
+    def update_coda(self):
+        nuova_coda = self.corpo[-1] - self.corpo[-2]
+        if nuova_coda == Vector2(1,0):
+            self.coda = self.codaE
+        elif nuova_coda == Vector2(-1,0):
+            self.coda = self.codaO
+        elif nuova_coda == Vector2(0,1):
+            self.coda = self.codaS
+        elif nuova_coda == Vector2(0,-1):
+            self.coda = self.codaN
+    def reset(self):
+        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
+        self.direction = Vector2(0,0)
 
     def draw_snake(self, lato_cella, screen):
         self.update_testa()
@@ -66,7 +92,7 @@ class Snake_Blu:
             if i == 0:
                 screen.blit(self.testa, rect_blocco)
             elif i == len(self.corpo) -1:
-                screen.blit(self.codaE, rect_blocco)
+                screen.blit(self.coda, rect_blocco)
             else:
                 # Calcola la differenza di posizione tra il blocco corrente e i blocchi precedente e successivo
                 blocco_precedente = self.corpo[i + 1] - blocco
@@ -94,27 +120,3 @@ class Snake_Blu:
                     elif (blocco_precedente.x == 1 and blocco_successivo.y == 1) or (blocco_precedente.y == 1 and blocco_successivo.x == 1):
                         # Disegna l'angolo in basso a destra
                         screen.blit(self.angoloSE, rect_blocco)
-    def update_testa(self):
-        nuova_testa = self.corpo[1] - self.corpo[0]
-        if nuova_testa == Vector2(1,0):
-            self.testa = self.testaO
-        elif nuova_testa == Vector2(-1,0):
-            self.testa = self.testaE
-        elif nuova_testa == Vector2(0,1):
-            self.testa = self.testaN
-        elif nuova_testa == Vector2(0,-1):
-            self.testa = self.testaS
-
-    def update_coda(self):
-        nuova_coda = self.corpo[-2] - self.corpo[-1]
-        if nuova_coda == Vector2(1,0):
-            self.coda = self.codaE
-        elif nuova_coda == Vector2(-1,0):
-            self.coda = self.codaO
-        elif nuova_coda == Vector2(0,1):
-            self.coda = self.codaN
-        elif nuova_coda == Vector2(0,-1):
-            self.coda = self.codaS
-    def reset(self):
-        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
-        self.direction = Vector2(0,0)

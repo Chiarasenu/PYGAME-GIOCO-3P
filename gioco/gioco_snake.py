@@ -24,7 +24,7 @@ pygame.display.set_caption('Snake')
 schermo_gioco = pygame.image.load("gioco/Immagini/sfondo1.png")
 schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 
-sfondo_menu = pygame.image.load("Gioco\Immagini\snake_principale.png")
+sfondo_menu = pygame.image.load("gioco/immagini/snake_principale.png")
 sfondo_menu = pygame.transform.scale(sfondo_menu, (1200, 600))
 AZZURRO = (54, 204, 227)
 
