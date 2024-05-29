@@ -83,7 +83,7 @@ def draw():
 def controllo_collisioni():
     if frutta.pos == snake_blu.corpo[0]:
         frutta.randomizza()
-        snake_blu.aggiugi_blocco()
+        snake_blu.aggiungi_blocco()
         suono_mangia.play()
 
     for blocco in snake_blu.corpo[1:]:

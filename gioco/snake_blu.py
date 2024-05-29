@@ -14,7 +14,7 @@ class Snake_Blu:
         self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
         self.direzione = Vector2(1,0)
 
-        self.nuovo_corpo = False
+        self.nuovo_blocco = False
 
     # IMMAGINI
         # Testa
@@ -41,15 +41,15 @@ class Snake_Blu:
 
     
 
-    def aggiugi_blocco(self):
+    def aggiungi_blocco(self):
         self.nuovo_blocco = True
 
     def muovi_snake(self):
-        if self.nuovo_corpo:
+        if self.nuovo_blocco == True:
             copia_corpo = self.corpo[:]
             copia_corpo.insert(0, copia_corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
-            self.nuovo_corpo = False
+            self.nuovo_blocco = False
         else:
             copia_corpo = self.corpo[:-1]
             copia_corpo.insert(0, self.corpo[0] + self.direzione)
