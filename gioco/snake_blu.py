@@ -74,9 +74,9 @@ class Snake_Blu:
         elif nuova_coda == Vector2(-1,0):
             self.coda = self.codaO
         elif nuova_coda == Vector2(0,1):
-            self.coda = self.codaS
-        elif nuova_coda == Vector2(0,-1):
             self.coda = self.codaN
+        elif nuova_coda == Vector2(0,-1):
+            self.coda = self.codaS
     def reset(self):
         self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
         self.direction = Vector2(0,0)
