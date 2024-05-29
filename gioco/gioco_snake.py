@@ -28,23 +28,27 @@ sfondo_menu = pygame.image.load("gioco/immagini/snake_principale.png")
 sfondo_menu = pygame.transform.scale(sfondo_menu, (1200, 600))
 AZZURRO = (54, 204, 227)
 
+# Suoni
+suono_mangia = pygame.mixer.Sound("Gioco/MusicaSuoni/crunch.wav")
+musica = pygame.mixer.Sound("Gioco/MusicaSuoni/pixelated-dreams-206019.mp3")
+
 # bottone singleplayer
 bottone_play = Bottone(screen,
-                         [350, 400],  # pos
-                         [500, 100],  # size
-                         "Gioca")
+                        [350, 400],  # pos
+                        [500, 100],  # size
+                        "gioca")
 
-# bottone singleplayer
+# bottone reset
 bottone_reset = Bottone(screen,
-                         [350, 400],  # pos
-                         [500, 100],  # size
-                         "Reset")
+                        [100, 400],  # pos
+                        [450, 100],  # size
+                        "reset")
 
-# bottone multiplayer
-# bottone_multi = Bottone(screen,
-#                         [650, 300],  # pos
-#                         [450, 100],  # size
-#                         "Multiplayer")
+# bottone reset
+bottone_quit = Bottone(screen,
+                        [100, 400],  # pos
+                        [450, 100],  # size
+                        "quit")
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
@@ -76,6 +80,7 @@ def controllo_collisioni():
     if frutta.pos == snake_blu.corpo[0]:
         frutta.randomizza()
         snake_blu.aggiugi_blocco()
+        suono_mangia.play()
 
     for blocco in snake_blu.corpo[1:]:
         if blocco == frutta.pos:
@@ -105,12 +110,12 @@ def singleplayer():
         if key[K_a] and snake_blu.direzione != Vector2(1, 0):
             snake_blu.direzione = Vector2(-1, 0)
 
-        if not 0 <= snake_blu.corpo[0].x < numero_celle or not 0 <= snake_blu.corpo[0].y < numero_celle:
+        if not 0 <= snake_blu.corpo[0].x < numero_celle or not 0 <= snake_blu.corpo[0].y < numero_celle / 2:
             game_over()
         for blocco in snake_blu.corpo[1:]:
             if blocco == snake_blu.corpo[0]:
                 game_over()
-
+        musica.play(-1)
         screen.fill((175, 215, 70))
         draw()
         pygame.display.update()
@@ -128,8 +133,12 @@ def game_over():
                 if bottone_reset.rect.collidepoint(pos):
                     bottone_reset.toggle()
                     screen.blit(schermo_gioco, (0, 0))
-
-                    singleplayer()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if bottone_quit.rect.collidepoint(pos):
+                    bottone_quit.toggle()
+                    pygame.quit()
+                    exit()
+                    
 
         # cambio colore se passo sopra i tasti singleplayer e multiplayer
         pos = pygame.mouse.get_pos()
@@ -138,7 +147,7 @@ def game_over():
         else:
             bottone_reset.base()
         bottone_reset.draw()
-
+        musica.play(-1)
         pygame.display.update()
         clock.tick(FPS)
 

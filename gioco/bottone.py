@@ -16,7 +16,7 @@ class Bottone:
         self.image = pygame.Surface(size)
         self.rect = pygame.Rect(pos[0], pos[1], size[0], size[1])
 
-        self.font = pygame.font.Font(None, 50)
+        self.font = pygame.font.Font("Gioco/Font/font.ttf", 50)
         
 
     def draw(self):
