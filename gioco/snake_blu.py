@@ -13,7 +13,7 @@ class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,7), Vector2(4,7), Vector2(3,7)]
         self.direzione = Vector2(1,0)
-
+        self.punteggio = 0
         self.nuovo_blocco = False
 
     # IMMAGINI
@@ -43,6 +43,7 @@ class Snake_Blu:
 
     def aggiungi_blocco(self):
         self.nuovo_blocco = True
+        self.punteggio +=1
 
     def muovi_snake(self):
         if self.nuovo_blocco == True:
