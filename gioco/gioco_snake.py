@@ -25,8 +25,6 @@ SCREEN_HEIGHT = numero_celle * lato_celle / 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Snake')
-schermo_gioco = pygame.image.load("gioco/Immagini/sfondo1.png")
-schermo_gioco = pygame.transform.scale(schermo_gioco, (1200, 600))
 
 sfondo_menu = pygame.image.load("gioco/immagini/snake_principale.png")
 sfondo_menu = pygame.transform.scale(sfondo_menu, (1200, 600))
@@ -128,6 +126,7 @@ def singleplayer():
         for blocco in snake_blu.corpo[1:]:
             if blocco == snake_blu.corpo[0]:
                 game_over()
+
         musica.play(-1)
         screen.fill((175, 215, 70))
         draw()
@@ -142,16 +141,16 @@ def game_over():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
                 if bottone_reset.rect.collidepoint(pos):
                     bottone_reset.toggle()
                     singleplayer()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if bottone_quit.rect.collidepoint(pos):
+                elif bottone_quit.rect.collidepoint(pos):
                     bottone_quit.toggle()
                     pygame.quit()
                     exit()
-                    
 
         # cambio colore se passo sopra i tasti reset e quit
         pos = pygame.mouse.get_pos()
@@ -179,30 +178,20 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                # exit()
+                exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if bottone_play.rect.collidepoint(pos):
                     bottone_play.toggle()
                     singleplayer()
 
-
-        # cambio colore se passo sopra i tasti singleplayer e multiplayer
+        # Cambio colore se passo sopra il tasto singleplayer
         pos = pygame.mouse.get_pos()
         if bottone_play.rect.collidepoint(pos):
             bottone_play.chiaro()
         else:
             bottone_play.base()
-        bottone_play.draw()
-
-        # pos = pygame.mouse.get_pos()
-        # if bottone_multi.rect.collidepoint(pos):
-        #     bottone_multi.chiaro()
-        # else:
-        #     bottone_multi.base()
-        # bottone_multi.draw()
 
         bottone_play.draw()
-        # bottone_multi.draw()
         pygame.display.update()
         clock.tick(FPS)
 

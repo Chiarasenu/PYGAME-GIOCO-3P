@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 class Snake_Blu:
     def __init__(self) -> None:
-        self.corpo = [Vector2(5,5), Vector2(4,5), Vector2(3,5)]
+        self.corpo = [Vector2(5,7), Vector2(4,7), Vector2(3,7)]
         self.direzione = Vector2(1,0)
 
         self.nuovo_blocco = False
