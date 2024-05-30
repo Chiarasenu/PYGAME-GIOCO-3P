@@ -51,7 +51,7 @@ bottone_reset = Bottone(screen,
                         "reset")
 
 bottone_quit = Bottone(screen,
-                        [100, 400],  # pos
+                        [650, 400],  # pos
                         [450, 100],  # size
                         "quit")
 
@@ -94,11 +94,16 @@ def update():
     snake_blu.muovi_snake()
     controllo_collisioni()
 
+def reset_game():
+    global snake_blu, frutta
+    snake_blu = Snake_Blu()
+    frutta = Frutta()
 
 # FUNZIONI DEL GIOCO -------------------------------------------------------------------------------- #
 
 
 def singleplayer():
+    reset_game()
     while True:
         pygame.display.set_caption("Singleplayer")
         for event in pygame.event.get():
@@ -140,7 +145,7 @@ def game_over():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if bottone_reset.rect.collidepoint(pos):
                     bottone_reset.toggle()
-                    screen.blit(schermo_gioco, (0, 0))
+                    singleplayer()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if bottone_quit.rect.collidepoint(pos):
                     bottone_quit.toggle()
@@ -148,13 +153,21 @@ def game_over():
                     exit()
                     
 
-        # cambio colore se passo sopra i tasti singleplayer e multiplayer
+        # cambio colore se passo sopra i tasti reset e quit
         pos = pygame.mouse.get_pos()
         if bottone_reset.rect.collidepoint(pos):
             bottone_reset.chiaro()
         else:
             bottone_reset.base()
+
+        pos = pygame.mouse.get_pos() 
+        if bottone_quit.rect.collidepoint(pos):
+            bottone_quit.chiaro()
+        else:
+            bottone_quit.base()
+
         bottone_reset.draw()
+        bottone_quit.draw()
         musica.play(-1)
         pygame.display.update()
         clock.tick(FPS)
@@ -170,7 +183,6 @@ def menu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if bottone_play.rect.collidepoint(pos):
                     bottone_play.toggle()
-                    screen.blit(schermo_gioco, (0, 0))
                     singleplayer()
 
 
