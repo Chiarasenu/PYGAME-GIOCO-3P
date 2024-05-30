@@ -37,6 +37,10 @@ pygame.time.set_timer(SCREEN_UPDATE, 150)
 suono_mangia = pygame.mixer.Sound("Gioco/MusicaSuoni/crunch.wav")
 musica = pygame.mixer.Sound("Gioco/MusicaSuoni/pixelated-dreams-206019.mp3")
 
+# FONT ---------------------------------------------------------------------------------------------- #
+font = pygame.font.Font("Gioco/Font/font.ttf", 300)
+scritta_snake = font.render("SNAKE", True, "BLACK")
+
 # BOTTONI ------------------------------------------------------------------------------------------- #
 bottone_play = Bottone(screen,
                         [350, 400],  # pos
@@ -175,6 +179,7 @@ def menu():
     pygame.display.set_caption("MENÙ")
     while True:
         screen.blit(sfondo_menu, (0, 0))
+        screen.blit(scritta_snake, (SCREEN_WIDTH // 2 - scritta_snake.get_width() // 2, 100))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
