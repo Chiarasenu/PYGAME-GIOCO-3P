@@ -154,8 +154,14 @@ def game_over(punteggio):
     pygame.display.set_caption("GAME OVER")
     while True:
         screen.blit(sfondo_menu, (0, 0))
+
+        # Scritta punti
         scritta_punti_nero = font_punti.render(f"PUNTI {punteggio}", True, "BLACK")
         scritta_punti_bianco = font_punti.render(f"PUNTI {punteggio}", True, "WHITE")
+
+        # Scritta punti su tot
+        # scritta_punti_nero = font_punti.render(f"PUNTI {punteggio} / {int(numero_celle * numero_celle / 2)}", True, "BLACK")
+        # scritta_punti_bianco = font_punti.render(f"PUNTI {punteggio} / {int(numero_celle * numero_celle / 2)}", True, "WHITE")
 
         screen.blit(scritta_punti_nero, (SCREEN_WIDTH // 2 - scritta_punti_nero.get_width() // 2, 100))
         screen.blit(scritta_punti_bianco, (SCREEN_WIDTH // 2 - scritta_punti_nero.get_width() // 2 - 10, 90))
