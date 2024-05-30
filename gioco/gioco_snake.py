@@ -14,7 +14,7 @@ from random import randint
 
 pygame.init()
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 15
 
 # SCHERMO ------------------------------------------------------------------------------------------- #
 numero_celle = 30
@@ -128,13 +128,13 @@ def singleplayer():
                 update()
 
         key = pygame.key.get_pressed()
-        if key[K_w] and snake_blu.direzione != Vector2(0, 1):
+        if (key[K_w] or key[K_UP]) and snake_blu.direzione != Vector2(0, 1):
             snake_blu.direzione = Vector2(0, -1)
-        if key[K_d] and snake_blu.direzione != Vector2(-1, 0):
+        if (key[K_d] or key[K_RIGHT]) and snake_blu.direzione != Vector2(-1, 0):
             snake_blu.direzione = Vector2(1, 0)
-        if key[K_s] and snake_blu.direzione != Vector2(0, -1):
+        if (key[K_s] or key[K_DOWN]) and snake_blu.direzione != Vector2(0, -1):
             snake_blu.direzione = Vector2(0, 1)
-        if key[K_a] and snake_blu.direzione != Vector2(1, 0):
+        if (key[K_a] or key[K_LEFT]) and snake_blu.direzione != Vector2(1, 0):
             snake_blu.direzione = Vector2(-1, 0)
 
         if not 0 <= snake_blu.corpo[0].x < numero_celle or not 0 <= snake_blu.corpo[0].y < numero_celle / 2:
@@ -145,6 +145,7 @@ def singleplayer():
 
         
         screen.fill((175, 215, 70))
+        draw_erba()
         draw()
         pygame.display.update()
         clock.tick(FPS)
