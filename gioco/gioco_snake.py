@@ -88,6 +88,11 @@ def draw_erba():
                     grass_rect = pygame.Rect(col * lato_celle, riga * lato_celle, lato_celle, lato_celle)
                     pygame.draw.rect(screen, grass_color, grass_rect)
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bfe219c334cd324e47919bf8cb512835a018d034
 def draw():
     draw_erba()
     frutta.draw_frutta()
