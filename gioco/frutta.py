@@ -20,7 +20,7 @@ class Frutta:
 
     def draw_frutta(self):
         fruit_rect = pygame.Rect(int(self.pos.x * lato_celle),int(self.pos.y * lato_celle), lato_celle, lato_celle)
-        pygame.draw.rect(screen, (167, 209, 61),fruit_rect)
+        pygame.draw.rect(screen, (167, 220, 61),fruit_rect)
         screen.blit(self.mela,fruit_rect)
 
     def randomizza(self):
