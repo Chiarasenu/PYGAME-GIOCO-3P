@@ -13,14 +13,8 @@ class Snake_Blu:
     def __init__(self) -> None:
         self.corpo = [Vector2(5,7), Vector2(4,7), Vector2(3,7)]
         self.direzione = Vector2(1,0)
-
         self.punteggio = 0
         self.nuovo_blocco = False
-
-
-        self.nuovo_corpo = False
-        self.game_over = False
-
 
     # IMMAGINI
         # Testa
@@ -52,7 +46,6 @@ class Snake_Blu:
         self.punteggio +=1
 
     def muovi_snake(self):
-
         if self.nuovo_blocco == True:
             copia_corpo = self.corpo[:]
             copia_corpo.insert(0, copia_corpo[0] + self.direzione)
@@ -62,20 +55,6 @@ class Snake_Blu:
             copia_corpo = self.corpo[:-1]
             copia_corpo.insert(0, self.corpo[0] + self.direzione)
             self.corpo = copia_corpo[:]
-
-        nuova_testa = self.corpo[0] + self.direzione
-        if 0 <= nuova_testa.x < SCREEN_WIDTH / lato_celle and 0 <= nuova_testa.y < SCREEN_HEIGHT / lato_celle:
-
-            
-            if self.nuovo_corpo:
-                copia_corpo = self.corpo[:]
-                copia_corpo.insert(0, copia_corpo[0] + self.direzione)
-                self.corpo = copia_corpo[:]
-                self.nuovo_corpo = False
-            else:
-                copia_corpo = self.corpo[:-1]
-                copia_corpo.insert(0, self.corpo[0] + self.direzione)
-                self.corpo = copia_corpo[:]
                 
     def update_testa(self):
         nuova_testa = self.corpo[0] - self.corpo[1]
@@ -100,9 +79,9 @@ class Snake_Blu:
             self.coda = self.codaS
 
     def reset(self):
-        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
+        self.body = [Vector2(5,7),Vector2(4,7),Vector2(3,7)]
         self.direction = Vector2(0,0)
-        self.nuovo_corpo = False
+        self.nuovo_blocco = False
         self.game_over = False
 
     def draw_snake(self, lato_cella, screen):
@@ -145,16 +124,16 @@ class Snake_Blu:
                         # Disegna l'angolo in basso a destra
                         screen.blit(self.angoloSE, rect_blocco)
 
-    def draw_game_over_screen(screen):
-        screen.fill((100, 100, 100))
-        font = pygame.font.Font(None, 74)
-        text = font.render('Game Over', True, (255, 255, 255))
-        text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
-        screen.blit(text, text_rect)
+    # def draw_game_over_screen(screen):
+    #     screen.fill((100, 100, 100))
+    #     font = pygame.font.Font(None, 74)
+    #     text = font.render('Game Over', True, (255, 255, 255))
+    #     text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
+    #     screen.blit(text, text_rect)
 
-        replay_font = pygame.font.Font(None, 50)
-        replay_text = replay_font.render('Replay', True, (0, 0, 0))
-        replay_rect = replay_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
-        pygame.draw.rect(screen, (255, 255, 255), replay_rect.inflate(20, 20))
-        screen.blit(replay_text, replay_rect)
-        return replay_rect
+    #     replay_font = pygame.font.Font(None, 50)
+    #     replay_text = replay_font.render('Replay', True, (0, 0, 0))
+    #     replay_rect = replay_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
+    #     pygame.draw.rect(screen, (255, 255, 255), replay_rect.inflate(20, 20))
+    #     screen.blit(replay_text, replay_rect)
+    #     return replay_rect
