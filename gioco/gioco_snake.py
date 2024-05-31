@@ -52,6 +52,9 @@ scritta_game_over_nero = font_game_over_nero.render("GAME OVER", True, "WHITE")
 
 font_punti = pygame.font.Font("Gioco/Font/Pixellari.ttf", 100)
 
+game_font = pygame.font.Font("Gioco/Font/Pixellari.ttf", 50)
+
+
 # BOTTONI ------------------------------------------------------------------------------------------- #
 bottone_play = Bottone(screen,
                         [350, 400],  # pos
@@ -88,8 +91,26 @@ def draw_erba():
                     grass_rect = pygame.Rect(col * lato_celle, riga * lato_celle, lato_celle, lato_celle)
                     pygame.draw.rect(screen, grass_color, grass_rect)
 
+
+
+def draw_score():
+		score_text = str(len(snake_blu.corpo) - 3)
+		score_surface = game_font.render(score_text,True,(56,74,12))
+		score_x = int(SCREEN_WIDTH - 60)
+		score_y = int(SCREEN_HEIGHT - 40)
+		score_rect = score_surface.get_rect(center = (score_x,score_y))
+		frutta_rect = frutta.get_rect(midright = (score_rect.left,score_rect.centery))
+		bg_rect = pygame.Rect(frutta_rect.left,frutta_rect.top,frutta_rect.width + score_rect.width + 6,frutta_rect.height)
+
+		pygame.draw.rect(screen,(167,209,61),bg_rect)
+		screen.blit(score_surface,score_rect)
+		screen.blit(frutta,frutta_rect)
+		pygame.draw.rect(screen,(56,74,12),bg_rect,2)
+
+
 def draw():
     draw_erba()
+    draw_score()
     frutta.draw_frutta()
     snake_blu.draw_snake(lato_celle, screen)
 
