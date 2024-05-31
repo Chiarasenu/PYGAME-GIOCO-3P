@@ -9,9 +9,7 @@ from snake_rosso import Snake_Rosso
 from bottone import Bottone
 from frutta import Frutta
 
-
 # INIZIALIZZAZIONE ---------------------------------------------------------------------------------- #
-
 pygame.init()
 clock = pygame.time.Clock()
 FPS = 60
@@ -88,11 +86,6 @@ def draw_erba():
                     grass_rect = pygame.Rect(col * lato_celle, riga * lato_celle, lato_celle, lato_celle)
                     pygame.draw.rect(screen, grass_color, grass_rect)
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bfe219c334cd324e47919bf8cb512835a018d034
 def draw():
     draw_erba()
     frutta.draw_frutta()
@@ -198,6 +191,7 @@ def game_over(punteggio):
         
         pygame.display.update()
         clock.tick(FPS)
+
 
 def menu():
     pygame.display.set_caption("MENÙ")

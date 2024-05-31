@@ -39,8 +39,6 @@ class Snake_Blu:
         self.angoloSE = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSE.png').convert_alpha()
         self.angoloSO = pygame.image.load('Gioco/Immagini/PartiSnake/Blu/snake_blu_angoloSO.png').convert_alpha()
 
-    
-
     def aggiungi_blocco(self):
         self.nuovo_blocco = True
         self.punteggio +=1
@@ -123,17 +121,3 @@ class Snake_Blu:
                     elif (blocco_precedente.x == 1 and blocco_successivo.y == 1) or (blocco_precedente.y == 1 and blocco_successivo.x == 1):
                         # Disegna l'angolo in basso a destra
                         screen.blit(self.angoloSE, rect_blocco)
-
-    # def draw_game_over_screen(screen):
-    #     screen.fill((100, 100, 100))
-    #     font = pygame.font.Font(None, 74)
-    #     text = font.render('Game Over', True, (255, 255, 255))
-    #     text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
-    #     screen.blit(text, text_rect)
-
-    #     replay_font = pygame.font.Font(None, 50)
-    #     replay_text = replay_font.render('Replay', True, (0, 0, 0))
-    #     replay_rect = replay_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
-    #     pygame.draw.rect(screen, (255, 255, 255), replay_rect.inflate(20, 20))
-    #     screen.blit(replay_text, replay_rect)
-    #     return replay_rect

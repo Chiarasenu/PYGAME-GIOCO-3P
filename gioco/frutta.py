@@ -10,7 +10,6 @@ SCREEN_HEIGHT = numero_celle * lato_celle / 2
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
 class Frutta:
     def __init__(self):
         self.randomizza()
