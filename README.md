@@ -6,9 +6,8 @@ Snake è un videogioco presente in molti telefonini, in particolare quelli prodo
 Snake è un serpente che mangiando quello che appare sul display si allunga, e il giocatore guadagna dei punti. Si muove costantemente e deve evitare di andare a sbattere contro i muri, ma soprattutto contro sé stesso, cosa sempre più difficile man mano che il suo corpo si allunga.
 
 COMANDI:
-Giocatore 1:  
-    W
-  A S D
+    W            ↑
+  A S D oppure ← ↓ →
 
 FRUTTA:
 Mela - Aumenta la lunghezza del serpente di uno
