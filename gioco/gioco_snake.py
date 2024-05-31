@@ -4,7 +4,6 @@ from pygame.locals import *
 from sys import exit
 from pygame import Vector2
 from snake_blu import Snake_Blu
-from snake_rosso import Snake_Rosso
 from bottone import Bottone
 from frutta import Frutta
 
@@ -67,7 +66,6 @@ bottone_quit = Bottone(screen,
 
 # ASSEGNAZIONI CLASSI ------------------------------------------------------------------------------- #
 snake_blu = Snake_Blu()
-snake_rosso = Snake_Rosso()
 frutta = Frutta()
 
 # FUNZIONI ------------------------------------------------------------------------------------------ #
